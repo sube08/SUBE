@@ -19,31 +19,6 @@
     <script src="js/jquery.js"></script>
     <script src="js/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <title>Editar Usuario - SUBE</title>
-  
-    
-    
-
-<!--    <script type="text/javascript">
-            $(document).ready(function () {
-
-
-                //ACTUALIZAR
-                $('#ActualizarCliente').click(function (e) {
-                    var txtNombre = document.getElementById("txtNombre_bsc").value
-                    txtNombre = txtNombre.trim();
-                    if (txtNombre.length == 0 || txtNombre == null) {
-                        event.stopImmediatePropagation();
-                        swal({ title: 'Error', text: 'Favor ingresar NOMBRE', type: 'error' });
-                        document.getElementById("txtNombre_bsc").focus();
-                        
-                    }else{}
-                    event.stopImmediatePropagation();
-
-                 e.preventDefault();
-                });
-             });
-            
-            </script>-->
             
 
 </head>
@@ -66,7 +41,7 @@
 
     <table style="width:90%">
         <tr>
-            <td align="right"><img style="width:80px; height:80px;" align='right' src="Img/cofodep-logo-1.png" /></td>
+            <td text-align="right"><img style="width:80px; height:80px;" align='right' src="Img/cofodep-logo-1.png" /></td>
         </tr>
     </table>
     <div id="frm">
