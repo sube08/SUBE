@@ -8,11 +8,11 @@ class conexionSP
     private $user;
     private $password;
 	
-	public function __construct($cadenaConexion, $user, $password)
+	public function __construct()
     {
-        $this->cadenaConexion=$cadenaConexion;
-        $this->user=$user;
-        $this->password=$password;
+        $this->cadenaConexion = 'mysql:host=localhost;dbname=bd_sb_sube';
+        $this->user = 'root';
+        $this->password = 'Fr4nc1sc0*1+Ñw';
     }
 
     public function conector()
