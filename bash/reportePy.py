@@ -243,13 +243,17 @@ toaddr = ['fco.moraga.s90@gmail.com']
 cc = ['']
 
 
-bcc = ['fco.moraga.s90@gmail.com', 'jose_lavadoss@hotmail.com','the.guitar.gibson@hotmail.com', 'fjmoragase@gmail.com']
+bcc = ['fjmoragase@gmail.com','falfarof@gmail.com','jose_lavadoss@hotmail.com','abenavente@laflorida.cl','falfaro@laflorida.cl','faaf10@gmail.com','eosses@laflorida.cl']
+
+;fco.moraga.s90@gmail.com
+
+
 
 message = """From: SUBE BELLAVISTA LA FLORIDA <""" + sender  +""">
 To:;
 MIME-Version: 1.0
 Content-type: text/html
-Subject: Reporte diario de - """ + asunto + """
+Subject: Reporte diario -SUBE- """ + asunto + """
 
 """ + mensaje + """
 """
