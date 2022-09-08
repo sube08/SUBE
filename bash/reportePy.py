@@ -245,8 +245,6 @@ cc = ['']
 
 bcc = ['fjmoragase@gmail.com','falfarof@gmail.com','jose_lavadoss@hotmail.com','abenavente@laflorida.cl','falfaro@laflorida.cl','faaf10@gmail.com','eosses@laflorida.cl']
 
-;fco.moraga.s90@gmail.com
-
 
 
 message = """From: SUBE BELLAVISTA LA FLORIDA <""" + sender  +""">
