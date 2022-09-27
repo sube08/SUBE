@@ -49,24 +49,27 @@
                 $(this).attr({ 'value': h + ':' + m });
 
             });
-        });
+           });
+      
 
-        $(function () {
-            var d = new Date();
-            var dia = d.getDate();
-            var mes = d.getMonth();
-            var anio = d.getFullYear();
-
-            if (dia < 10) dia = '0' + dia;
-            if (mes < 10) mes = '0' + mes;
-
-            $('input[type="date"]').each(function () {
-                $(this).attr({ 'value': anio + '-' + (mes + 1) + '-' + dia });
-            });
-
-        });
+//        $(function () {
+//            var d = new Date();
+//            var dia = d.getDate();
+//            var mes = d.getMonth();
+//            var anio = d.getFullYear();
+//
+//            if (dia < 10) dia = '0' + dia;
+//            if (mes < 10) mes = '0' + mes;
+//
+//            $('input[type="date"]').each(function () {
+//                $(this).attr({ 'value': dia + '-' + (mes + 1) + '-' + anio });
+//            });
+//
+//        });
         buscarAnotaciones();
     </script>
+
+
 
     <table style="width:90%">
         <tr>
@@ -107,7 +110,7 @@
                 </div>
             </div>
             &nbsp;
-            <div class="row">
+            <div class="row" id="datees">
                 <div class="col">
                     <label>Anotación</label>
                     <div class="input-group" style="width:700px; height:100px">
@@ -124,7 +127,7 @@
             <label for="fehaRegAnotaciones">Registros con fecha:</label>
             <br />
             <input type="date" id="fehaRegAnotaciones" name="fehaRegAnotaciones"
-                   value="2021-11-07"
+                   value="<?php echo date("Y-m-d");?>"
                    min="2021-08-11" max="2099-12-31">
             <input type="button" id="btnBuscarAnot" name="btnBuscarAnot" class="btn btn-success btn-sm" style="width:110px; align:right; font-family: 'Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif'" value="Buscar" />
             <br />
