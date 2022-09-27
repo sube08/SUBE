@@ -9,7 +9,7 @@ function LimpiarformBuscar()
    document.getElementById("txtRut_bsc").value = "";
    document.getElementById("txtNombre_bsc").value = "";
    document.getElementById("txtTelefono_bsc").value = "";
-   document.getElementById("cmbSexo_bsc").value = "";
+   document.getElementById("cmbSexo_bsc").value = "0";
    document.getElementById("txtEmail_bsc").value = "";
    document.getElementById("txtDireccion_bsc").value = "";
    document.getElementById("cmbComuna_bsc").value = 13101;
@@ -701,7 +701,7 @@ function UpdateRegistros() {
             document.getElementById("txtRut_bsc").value = "";
             document.getElementById("txtNombre_bsc").value = "";
             document.getElementById("txtTelefono_bsc").value = "";
-            document.getElementById("cmbSexo_bsc").value = "";
+            document.getElementById("cmbSexo_bsc").value = "0";
             document.getElementById("txtEmail_bsc").value = "";
             document.getElementById("txtDireccion_bsc").value = "";
             document.getElementById("txtNroUV_bsc").value = "";
@@ -777,6 +777,33 @@ function UpdateRegistros() {
                 var nroTarjeta_bsc = document.getElementById("txtNroTarjeta_bsc").value;
                 var fecNaci_bsc = document.getElementById("bscFechaNacimiento").value;
                 var pais_bsc = document.getElementById("cmbNacionalidad").value;
+
+
+                if(sexo_bsc == "0")
+                {
+                    swal({title:'Error',text:'Seleccione el sexo del ciclista',type:'error'});
+                    return null;
+                }
+                else if(telefono_bsc.length < 12)
+                {
+                    swal({title:'Error',text:'Debe ingresar un telefono valido',type:'error'});
+                    return false;
+                }
+
+
+                var fechaNacimiento = $("#bscFechaNacimiento").val();
+                var fechaHoy = new Date().getTime();
+                var aniosDiferencia = ((fechaHoy - fechaNacimiento) / (1000 * 60 * 60 * 24 * 365.25));
+
+                if(aniosDiferencia < 7 || aniosDiferencia > 100)
+                {
+                    swal({title:'Error',text:'Por favor ingrese una fecha de nacimiento correcta',type:'error'});
+                    return false;
+                }
+
+
+                
+
 
 
 

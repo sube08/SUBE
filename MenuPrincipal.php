@@ -174,7 +174,7 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="fa fa-phone"></i></div>
                                             </div>
-                                            <input type="text" id="txtTelefono" name="txtTelefono" value="" size="30" placeholder="Ej:. +56915987598" class="form-control form-control-sm" required />
+                                            <input type="text" id="txtTelefono" name="txtTelefono" value="" size="12" maxlength="12" minlength="12" placeholder="Ej:. +56915987598" class="form-control form-control-sm" required />
                                         </div>
                                 </div>
                             </div>
@@ -188,8 +188,9 @@
                                                 <div class="input-group-text"><i class="fa fa-venus-mars"></i></div>
                                             </div>
                                             <select style="width: 400px" id="cmbSexo" name="cmbSexo" class="form-select form-select-sm" required>
-                                                <option>HOMBRE</option>
-                                                <option>MUJER</option>
+                                            <option value="0">-Seleccionar-</option>
+                                            <option value="HOMBRE">HOMBRE</option>
+                                                <option value="MUJER">MUJER</option>
                                             </select>
                                         </div>
                                 </div>
@@ -1199,6 +1200,23 @@
             //AJAX NUEVO USUARIO CON BICICLETA
             $('#form-new-user_').submit(function (e) {
 
+                var sexoCic = $("#cmbSexo").val();
+                var telefonoFrm = $("#txtTelefono").val();
+
+                if(sexoCic == "0")
+                {
+                    alert("Debe seleccionar sexo del ciclista");
+                    return false;
+                }
+                else if(telefonoFrm.length < 12)
+                {
+                    swal({ title: 'Error', text: 'Debe ingresar un telefono valido', type: 'error' }); 
+                    return false;   
+                }
+
+
+
+
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
@@ -1214,7 +1232,7 @@
                         document.getElementById("txtRut_").value = "";
                         document.getElementById("txtNombre_").value = "";
                         document.getElementById("txtTelefono").value = "";
-                        document.getElementById("cmbSexo").value = "HOMBRE";
+                        document.getElementById("cmbSexo").value = "0";
                         document.getElementById("cmbNacionalidad").value = "400";
                         document.getElementById("txtEmail").value = "";
                         document.getElementById("txtDireccion").value = "";
@@ -1236,6 +1254,21 @@
             //AJAX NUEVO USUARIO SIN BICICLETA
             $('#form-new-user').submit(function (e) {
 
+
+                var sexoCic = $("#cmbSexo").val();
+                var telefonoFrm = $("#txtTelefono").val();
+
+                if(sexoCic == "0")
+                {
+                    alert("Debe seleccionar sexo del ciclista");
+                    return false;
+                }
+                else if(telefonoFrm.length < 12)
+                {
+                    swal({ title: 'Error', text: 'Debe ingresar un telefono valido', type: 'error' }); 
+                    return false;   
+                }
+
                 e.preventDefault();
                 $.ajax({
                     type: "GET",
@@ -1250,7 +1283,7 @@
                         document.getElementById("txtRut_").value = "";
                         document.getElementById("txtNombre_").value = "";
                         document.getElementById("txtTelefono").value = "";
-                        document.getElementById("cmbSexo").value = "HOMBRE";
+                        document.getElementById("cmbSexo").value = "0";
                         document.getElementById("cmbNacionalidad").value = "400";
                         document.getElementById("txtEmail").value = "";
                         document.getElementById("txtDireccion").value = "";

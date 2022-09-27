@@ -136,7 +136,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
                                 </div>
-                                <input type="text" id="txtTelefono" name="txtTelefono" value="" size="30" placeholder="Ej:. +56915987598" maxlength="12" class="form-control form-control-sm" required />
+                                <input type="text" id="txtTelefono" name="txtTelefono" value="" size="12" minlength="12" maxlength="12" placeholder="Ej:. +56915987598" maxlength="12" class="form-control form-control-sm" required />
                             </div>
                         </div>
 
@@ -147,8 +147,9 @@
                                     <div class="input-group-text"><i class="fa fa-venus-mars"></i></div>
                                 </div>
                                 <select style="width: 400px" id="cmbSexo" name="cmbSexo" class="form-select form-select-sm" required>
-                                    <option>HOMBRE</option>
-                                    <option>MUJER</option>
+                                    <option value="0">-Seleccione Sexo-</option>    
+                                    <option value="HOMBRE">HOMBRE</option>
+                                    <option value="MUJER">MUJER</option>
                                 </select>
                             </div>
                         </div>
@@ -575,7 +576,32 @@
 
 
             //AJAX NUEVO USUARIO SIN BICICLETA
-            $('#form-new-user').submit(function (e) { 
+            $('#form-new-user').submit(function (e) {
+
+                var sexoFrm = $("#cmbSexo").val();
+                var telefonoFrm = $("#txtTelefono").val();
+
+                if(sexoFrm == "0")
+                {
+                    swal({ title: 'Error', text: 'Debe seleccionar sexo del Ciclista', type: 'error' }); 
+                    return false;      
+                }
+                else if(telefonoFrm.length < 12)
+                {
+                    swal({ title: 'Error', text: 'Debe ingresar un telefono valido', type: 'error' }); 
+                    return false;   
+                }
+
+                var fechaNacimiento = $("#txtFechaNacimiento").val();
+                var fechaHoy = new Date().getTime();
+                var aniosDiferencia = ((fechaHoy - fechaNacimiento) / (1000 * 60 * 60 * 24 * 365.25));
+
+                if(aniosDiferencia < 7 || aniosDiferencia > 100)
+                {
+                    swal({title:'Error',text:'Por favor ingrese una fecha de nacimiento correcta',type:'error'});
+                    return false;
+                }
+
                document.getElementById("botondeenvio").disabled = true;
 
                 
@@ -596,7 +622,7 @@
                         document.getElementById("txtRut_").value = "";
                         document.getElementById("txtNombre_").value = "";
                         document.getElementById("txtTelefono").value = "";
-                        document.getElementById("cmbSexo").value = "HOMBRE";
+                        document.getElementById("cmbSexo").value = "0";
                         document.getElementById("cmbNacionalidad").value = "400";
                         document.getElementById("txtEmail").value = "";
                         document.getElementById("txtDireccion").value = "";
