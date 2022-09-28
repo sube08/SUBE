@@ -10,8 +10,8 @@ class conexion
     {
         $this->cadenaConexion= 'mysql:host=localhost;dbname=bd_sb_sube';
         $this->user= 'root';
-        $this->password= 'Fr4nc1sc0*1+Ñw';
-    }
+        $this->password= 'Fr4nc1sc0*1+Ñw';   
+ }
 
     public function conector()
     {

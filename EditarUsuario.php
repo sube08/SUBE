@@ -61,7 +61,8 @@
     header("Location: index.html");
     }
 
-
+	
+	$fecha_actual = date("d-m-Y");
     ?>
 
     <table style="width:90%">
@@ -129,8 +130,9 @@
                                 </div>
 
                                 <select style="width: 200px" id="cmbSexo_bsc" name="cmbSexo_bsc" class="form-select form-select-sm">
-                                    <option>HOMBRE</option>
-                                    <option>MUJER</option>
+                                    <option>-Seleccionar-</option>
+				    <option value="HOMBRE">HOMBRE</option>
+                                    <option value="MUJER">MUJER</option>
                                 </select>
                             </div>
                         </div>
