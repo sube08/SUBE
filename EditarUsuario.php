@@ -567,7 +567,7 @@
                                                     <div class="input-group-text"><i class="fa fa-pencil"></i></div>
                                                 </div>
 <!--                                                <input type="text" id="descBic" name="descBic" style="width:50px" value="" size="30" placeholder="Color negro con detalles blancos, Aro 27.5, frenos disco, canasta delantera, luz delantera blanca... " class="form-control form-control-sm" />-->
-                                                <textarea id="descBic" name="descBic" rows="2" cols="10" maxlength="250" placeholder="Color negro con detalles blancos, Aro 27.5, frenos disco, canasta delantera, luz delantera blanca... " class="form-control form-control-sm" style="resize: none" required></textarea>
+                                                <textarea id="descBic" name="descBic" rows="2" cols="10" maxlength="250" placeholder="Color negro, detalles verdes, letras blancas, horquilla gris, aro 27.5, frenos de disco mecánico Shimano ambas ruedas, cambios Shimano Tourney, talla M, stickers varios, reflector rojo trasero, porta botella, reflector blanco rueda delantera." class="form-control form-control-sm" style="resize: none" required></textarea>
                                             </div>
                                         </div>
                                     </div>
