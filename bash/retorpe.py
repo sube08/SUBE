@@ -243,7 +243,7 @@ toaddr = ['fco.moraga.s90@gmail.com']
 cc = ['']
 
 
-bcc = ['fjmoragase@gmail.com','jose_lavadoss@hotmail.com','abenavente@laflorida.cl','falfaro@laflorida.cl']
+bcc = ['fjmoragase@gmail.com','falfarof@gmail.com','jose_lavadoss@hotmail.com','abenavente@laflorida.cl','falfaro@laflorida.cl','faaf10@gmail.com','eosses@laflorida.cl']
 
 
 

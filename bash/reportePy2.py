@@ -235,7 +235,7 @@ tablaDetalleHoy += "</table>"
 
 asunto = "" + prm_fecha
 
-mensaje = " <h1>Estimado(a) </h1>  <h2>a continuaci&oacute;n el reporte diario <b><i>SUBE</i></b></h2></br> "+ tablaDetalleGeneral  +" <hr/> <h4>Detalle Ingresos hoy </h4> "+ tablaDetalleHoy +"  <br/>  <center><h2>Novedades del d&iacute;a</h2></center>" + (tablaNovedades).encode('cp1252').strip() + "  <br/>  <img src='https://www.subelaflorida.cl/wp-content/uploads/2021/05/Logo-SUBE-1-1024x717.png'  style='width:150px; height:105px'/>   </br></br><p>Por favor no responda a este correo, ya que se envia desde un proceso automatizado usando una cuenta no monitoreada.</p>"
+mensaje = " <h1>Estimado(a) </h1>  <h2>a continuaci&oacute;n el reporte diario <b><i>SUBE</i></b></h2></br> "+ tablaDetalleGeneral  +" <hr/> <h4>Detalle Ingresos hoy </h4> "+ tablaDetalleHoy +"  <br/>  <center><h2>Novedades del d&iacute;a</h2></center>" + (tablaNovedades).encode('cp1252', errors='ignore').strip() + "  <br/>  <img src='https://www.subelaflorida.cl/wp-content/uploads/2021/05/Logo-SUBE-1-1024x717.png'  style='width:150px; height:105px'/>   </br></br><p>Por favor no responda a este correo, ya que se envia desde un proceso automatizado usando una cuenta no monitoreada.</p>"
 
 
 sender = 'sube.bellavista.lf@hotmail.com'
