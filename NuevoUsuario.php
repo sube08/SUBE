@@ -175,6 +175,7 @@
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
                                 <select style="width: 400px" id="cmbNacionalidad" name="cmbNacionalidad" class="form-select form-select-sm" required>
+						<option value="">-Seleccionar-</option>
                                     <option value='400'>Chile</option>
                                     <option value='10'>Argentina</option>
                                     <option value='20'>Afganistán</option>
@@ -412,6 +413,7 @@
                                     <div class="input-group-text"><i class="fa fa-group"></i></div>
                                 </div>
                                 <select style="width: 400px" id="cmbComuna" name="cmbComuna" class="form-select form-select-sm" required>
+						<option value="">-Seleccionar-</option>
                                     <option value='13101'>SANTIAGO</option>
                                     <option value='13502'>ALHUÉ</option>
                                     <option value='13402'>BUIN </option>
