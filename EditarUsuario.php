@@ -451,7 +451,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-credit-card"></i></div>
                                 </div>
-                                <input type="text" id="txtNroTarjeta_bsc" name="txtNroTarjeta_bsc" value="" maxlength="100" size="0" placeholder="Ingrese nro. Tarjeta" class="form-control form-control-sm" style="width:0px" /> <input id="scanerusrNFC" name="scanerusrNFC" type="button" class="btn btn-danger btn-sm" style="height:31px" value="Escanear" /><label id="lblEscUsuNFC" name="lblEscUsuNFC" style="display:none; color:darkred">Escaneando</label>
+                                <input type="text" id="txtNroTarjeta_bsc" name="txtNroTarjeta_bsc" value="" maxlength="50" size="0" placeholder="Ingrese nro. Tarjeta" class="form-control form-control-sm" style="width:0px" /> <input id="scanerusrNFC" name="scanerusrNFC" type="button" class="btn btn-danger btn-sm" style="height:31px" value="Escanear" /><label id="lblEscUsuNFC" name="lblEscUsuNFC" style="display:none; color:darkred">Escaneando</label>
                             </div>
                         </div>
                         <div class="col">
