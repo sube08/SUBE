@@ -1,6 +1,6 @@
 <?php 
 
-require_once('../../config.php');
+//require_once('../config.php');
 
 header('Content-Type: application/json');
 
@@ -14,11 +14,13 @@ class conexionSP
 	public function __construct()
 	{
 
-		$this->cadenaConexion= 'mysql:host='. DB_HOST .';dbname=' . DB_NAME;
-        	$this->user= DB_USER;
-        	$this->password= DB_PASSWORD;
-	}	
- 
+		$this->cadenaConexion= 'mysql:host='.DB_HOST.';dbname='.DB_NAME;
+        	$this->user=DB_USER;
+        	$this->password= DB_PASSWORD;  
+
+	}
+
+
     public function conector()
     {
         try

@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../config.php');
+require_once('config.php');
 
 class conexion
 {
@@ -12,8 +12,8 @@ class conexion
     public function __construct()
     {
 
-	$this->cadenaConexion= 'mysql:host='. DB_HOST .';dbname=' . DB_NAME;
-        $this->user= DB_USER;
+	$this->cadenaConexion= 'mysql:host='.DB_HOST.';dbname='.DB_NAME;
+       $this->user=DB_USER;
         $this->password= DB_PASSWORD;  
 
  }

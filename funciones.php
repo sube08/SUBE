@@ -1,6 +1,6 @@
 <?php
 
-include("Conexion/Negocio.php");
+require_once('Conexion/Negocio.php');
 
 	function funcionConsulta1($consulta)
 	{

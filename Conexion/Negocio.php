@@ -15,8 +15,8 @@ header('Content-Type: application/json');
 
     public function __construct()
     {
-        $this->objetoDato = new conexion();
-		$this->objetoDatoParaSP = new conexionSP();
+       $this->objetoDato = new conexion('mysql:host=localhost;dbname=bd_sb_sube','root','fr@nc1$co');
+	$this->objetoDatoParaSP = new conexionSP('mysql:host=localhost;dbname=bd_sb_sube','root','fr@nc1$co');
     }
 
 
