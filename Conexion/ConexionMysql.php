@@ -1,4 +1,7 @@
 <?php
+
+require_once('../../config.php');
+
 class conexion
 {
     private $cadenaConexion;
@@ -8,9 +11,11 @@ class conexion
 
     public function __construct()
     {
-        $this->cadenaConexion= 'mysql:host=localhost;dbname=bd_sb_sube';
-        $this->user= 'root';
-        $this->password= 'Fr4nc1sc0*1+Ñw';   
+
+	$this->cadenaConexion= 'mysql:host='. DB_HOST .';dbname=' . DB_NAME;
+        $this->user= DB_USER;
+        $this->password= DB_PASSWORD;  
+
  }
 
     public function conector()

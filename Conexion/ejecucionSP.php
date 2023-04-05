@@ -1,25 +1,29 @@
 <?php 
+
+require_once('../../config.php');
+
 header('Content-Type: application/json');
 
 class conexionSP
 {
-	private $cadenaConexion;
+    private $cadenaConexion;
     private $mysqli;
     private $user;
     private $password;
 	
 	public function __construct()
-    {
-        $this->cadenaConexion = 'mysql:host=localhost;dbname=bd_sb_sube';
-        $this->user = 'root';
-        $this->password = 'Fr4nc1sc0*1+Ñw';
-    }
+	{
 
+		$this->cadenaConexion= 'mysql:host='. DB_HOST .';dbname=' . DB_NAME;
+        	$this->user= DB_USER;
+        	$this->password= DB_PASSWORD;
+	}	
+ 
     public function conector()
     {
         try
         {
-            $this->mysqli = new mysqli("localhost", "root","Fr4nc1sc0*1+Ñw", "bd_sb_sube");
+            $this->mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         }
         catch(PDOException $ex)
         {
