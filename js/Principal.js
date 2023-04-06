@@ -5,6 +5,8 @@ document.getElementById('id02').style.display = 'none';
 document.getElementById('id03').style.display = 'none';
 document.getElementById('fondoAvisoCorrecto').style.display = 'none';
 
+var intervaloEnEjecucion = false;
+
 document.getElementById("limpBuscar").addEventListener("click", function() {
 LimpiarformBuscar();
 });
@@ -30,6 +32,11 @@ function LimpiarformBuscar()
 
   setInterval(function()
   { 
+
+    if(!intervaloEnEjecucion)
+    {
+
+        intervaloEnEjecucion = true;
 	
 	var opcionTablaVisitas = ($('input:radio[name=rbCiclistas]:checked').val());
 	console.log(opcionTablaVisitas);
@@ -39,8 +46,12 @@ function LimpiarformBuscar()
     data: {"txtTablaVisitas":opcionTablaVisitas},
     error: function (jqXHR, textStatus, errorThrown) {
 
+        intervaloEnEjecucion = false;
+
     },
     success: function (response) {
+        
+        intervaloEnEjecucion = false;
 	
     var len = response.length;
 	$("#tblEventos").empty();
@@ -80,13 +91,15 @@ function LimpiarformBuscar()
 			CANDADO = response[i].CND_NUMERO,
 			BICICLETA = response[i].BIC_ID,
 			ENTRADA = response[i].HORA_ENTRADA,
-			SALIDA = response[i].HORA_SALIDA;
+			MODELO = response[i].BIC_MODELO,
+            DESCRIPCION = response[i].BIC_DESCRIPCION,
+            SALIDA = response[i].HORA_SALIDA;
 			document.getElementById("tblEventos").insertRow(-1).innerHTML = 
 			'<td>' + (i+1) +
 			'</td><td><a href="EditarUsuario.php?rut='+ RUT_CIC +'"> ' + RUT_CIC + '</a>' +
 			'</td><td>' + NOMBRE.toUpperCase() +
 			'</td><td>' + (CANDADO == null? '' : '<div id="divNumeroCandado" name="divNumeroBicicleta" onClick="opcionCandado(' + CANDADO +', \''+ RUT_CIC +'\')">' + CANDADO + '</div>') +
-			'</td><td>' + BICICLETA +
+			'</td><td>' + '<div title="'+ MODELO + ' - ' + DESCRIPCION +'">'+ BICICLETA +'</div>' +
 			'</td><td>' + (ENTRADA == null? '' : ENTRADA) +
 			'</td><td>' + (SALIDA == null? '' : SALIDA) +
 		//	'</td><td>' + (SALIDA == null? '' : SALIDA) + // PARA BICICLETAS
@@ -98,6 +111,9 @@ function LimpiarformBuscar()
 
     }
     });
+
+    
+}
 	//alert("Hello"); 
   
   }, 5000);
