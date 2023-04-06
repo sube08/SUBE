@@ -98,7 +98,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                                 </div>
-                                <input type="text" id="txtRut_bsc" name="txtRut_bsc" title="Rut" size="30" maxlength="12" placeholder="Ej:. 11123456-0" onkeyup="blurRutField(this)" onblur="checkearRut(this)" class="form-control form-control-sm" required/>
+                                <input type="text" id="txtRut_bsc" name="txtRut_bsc" title="Rut" autocomplete="off" size="30" maxlength="12" placeholder="Ej:. 11123456-0" onkeyup="blurRutField(this)" onblur="checkearRut(this)" class="form-control form-control-sm" required/>
                             </div>
                         </div>
                         <div class="col">
@@ -107,7 +107,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                                 </div>
-                                <input type="text" id="txtNombre_bsc" name="txtNombre_bsc" value="" size="30" maxlength="50" placeholder="Ej:. Juan Perez Perez" class="form-control form-control-sm" />
+                                <input type="text" id="txtNombre_bsc" name="txtNombre_bsc" autocomplete="off" value="" size="30" maxlength="50" placeholder="Ej:. Juan Perez Perez" class="form-control form-control-sm" />
                             </div>
                         </div>
                         <div class="col">
@@ -116,7 +116,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
                                 </div>
-                                <input type="text" id="txtTelefono_bsc" name="txtTelefono_bsc" value="" size="30" maxlength="12" placeholder="Ej:. +56915987598" class="form-control form-control-sm" />
+                                <input type="text" id="txtTelefono_bsc" name="txtTelefono_bsc" value="" autocomplete="off" size="30" maxlength="12" placeholder="Ej:. +56915987598" class="form-control form-control-sm" />
                             </div>
                         </div>
                     </div>
@@ -354,7 +354,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-at"></i></div>
                                 </div>
-                                <input type="text" id="txtEmail_bsc" name="txtEmail_bsc" value="" size="30" maxlength="60" placeholder="Ej:. alguien@dominio.com" class="form-control form-control-sm" />
+                                <input type="text" id="txtEmail_bsc" name="txtEmail_bsc" value="" autocomplete="off" size="30" maxlength="60" placeholder="Ej:. alguien@dominio.com" class="form-control form-control-sm" />
                             </div>
                         </div>
                     </div>
@@ -366,7 +366,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-home"></i></div>
                                 </div>
-                                <input type="text" id="txtDireccion_bsc" name="txtDireccion_bsc" value="" maxlength="80" size="30" placeholder="Ej:. Villa Margarita psje. 12 número 123 dpto. 21" class="form-control form-control-sm" />
+                                <input type="text" id="txtDireccion_bsc" name="txtDireccion_bsc" value="" autocomplete="off" maxlength="80" size="30" placeholder="Ej:. Villa Margarita psje. 12 número 123 dpto. 21" class="form-control form-control-sm" />
                             </div>
                         </div>
                         <div class="col">
@@ -439,7 +439,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-group"></i></div>
                                 </div>
-                                <input type="text" id="txtNroUV_bsc" name="txtNroUV_bsc" value="" maxlength="3" size="30" placeholder="Ej:. 143" class="form-control form-control-sm" />
+                                <input type="text" id="txtNroUV_bsc" name="txtNroUV_bsc" value="" autocomplete="off" maxlength="3" size="30" placeholder="Ej:. 143" class="form-control form-control-sm" />
                             </div>
                         </div>
                     </div>
@@ -451,7 +451,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-credit-card"></i></div>
                                 </div>
-                                <input type="text" id="txtNroTarjeta_bsc" name="txtNroTarjeta_bsc" value="" maxlength="50" size="0" placeholder="Ingrese nro. Tarjeta" class="form-control form-control-sm" style="width:0px" /> <input id="scanerusrNFC" name="scanerusrNFC" type="button" class="btn btn-danger btn-sm" style="height:31px" value="Escanear" /><label id="lblEscUsuNFC" name="lblEscUsuNFC" style="display:none; color:darkred">Escaneando</label>
+                                <input type="text" id="txtNroTarjeta_bsc" name="txtNroTarjeta_bsc" value="" autocomplete="off" maxlength="50" size="0" placeholder="Ingrese nro. Tarjeta" class="form-control form-control-sm" style="width:0px" /> <input id="scanerusrNFC" name="scanerusrNFC" type="button" class="btn btn-danger btn-sm" style="height:31px" value="Escanear" /><label id="lblEscUsuNFC" name="lblEscUsuNFC" style="display:none; color:darkred">Escaneando</label>
                             </div>
                         </div>
                         <div class="col">

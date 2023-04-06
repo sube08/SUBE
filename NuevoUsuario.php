@@ -114,7 +114,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                                 </div>
-                                <input type="text" id="txtRut_" name="txtRut_" title="Rut" size="30" placeholder="Ej:. 7.654.817-3" onkeyup="blurRutField(this)" onblur="checkearRutCic(this,0)" class="form-control form-control-sm" maxlength="12" required />
+                                <input type="text" id="txtRut_" name="txtRut_" title="Rut" autocomplete="off" size="30" placeholder="Ej:. 7.654.817-3" onkeyup="blurRutField(this)" onblur="checkearRutCic(this,0)" class="form-control form-control-sm" maxlength="12" required />
                             </div>
                         </div>
 
@@ -124,7 +124,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                                 </div>
-                                <input type="text" id="txtNombre_" name="txtNombre_" value="" size="30" placeholder="Ej:. Juan Perez Perez" class="form-control form-control-sm" maxlength="50" required />
+                                <input type="text" id="txtNombre_" name="txtNombre_" value="" autocomplete="off" size="30" placeholder="Ej:. Juan Perez Perez" class="form-control form-control-sm" maxlength="50" required />
                             </div>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
                                 </div>
-                                <input type="text" id="txtTelefono" name="txtTelefono" value="" size="12" placeholder="Ej:. +56915987598" maxlength="12" minlength="12" class="form-control form-control-sm" required />
+                                <input type="text" id="txtTelefono" name="txtTelefono" value="" autocomplete="off" size="12" placeholder="Ej:. +56915987598" maxlength="12" minlength="12" class="form-control form-control-sm" required />
                             </div>
                         </div>
 
@@ -390,7 +390,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-at"></i></div>
                                 </div>
-                                <input type="email" id="txtEmail" name="txtEmail" value="" size="30" maxlength="60" placeholder="Ej:. alguien@dominio.com" class="form-control form-control-sm" required />
+                                <input type="email" id="txtEmail" name="txtEmail" value="" autocomplete="off" size="30" maxlength="60" placeholder="Ej:. alguien@dominio.com" class="form-control form-control-sm" required />
                             </div>
                         </div>
 
@@ -400,7 +400,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-home"></i></div>
                                 </div>
-                                <input type="text" id="txtDireccion" name="txtDireccion" value="" size="30" maxlength="80" placeholder="Ej:. Villa Margarita psje. 12 número 123 dpto. 21" class="form-control form-control-sm" required />
+                                <input type="text" id="txtDireccion" name="txtDireccion" value="" size="30" autocomplete="off" maxlength="80" placeholder="Ej:. Villa Margarita psje. 12 número 123 dpto. 21" class="form-control form-control-sm" required />
                             </div>
                         </div>
                     </div>
@@ -489,7 +489,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-credit-card"></i></div>
                                 </div>
-                                <input type="text" id="txtNroTarjeta" name="txtNroTarjeta" maxlength="50" value="" size="30" placeholder="Ingrese nro. Tarjeta" class="form-control form-control-sm" required /> <input id="scanerusrRegNFC" name="scanerusrRegNFC" type="button" class="btn btn-danger btn-sm" value="ESCANEAR" /><label id="lblEscUsuRegNFC" name="lblEscUsuRegNFC" style="display:none; color:darkred">Escaneando</label>
+                                <input type="text" id="txtNroTarjeta" name="txtNroTarjeta" maxlength="50" autocomplete="off" value="" size="30" placeholder="Ingrese nro. Tarjeta" class="form-control form-control-sm" required /> <input id="scanerusrRegNFC" name="scanerusrRegNFC" type="button" class="btn btn-danger btn-sm" value="ESCANEAR" /><label id="lblEscUsuRegNFC" name="lblEscUsuRegNFC" style="display:none; color:darkred">Escaneando</label>
                             </div>
 
                         </div>
@@ -497,15 +497,15 @@
                     &nbsp;
                     <!--        <tr>
                                 <td>TAG N°</td>
-                                <td><input type="text" id="txtNroTag" name="txtNroTag" value="" size="30" placeholder="Presione para escanear" disabled class="form-control" required /> <input id="scanerusr" name="scanerusr" type="button" value="ESCANEAR" /><label id="lblEscUsu" name="lblEscUsu" style="display:none; color:darkred">Escaneando</label></td>
+                                <td><input type="text" id="txtNroTag" name="txtNroTag" value="" size="30" autocomplete="off" placeholder="Presione para escanear" disabled class="form-control" required /> <input id="scanerusr" name="scanerusr" type="button" value="ESCANEAR" /><label id="lblEscUsu" name="lblEscUsu" style="display:none; color:darkred">Escaneando</label></td>
                             </tr>
                             <tr>
                                 <td>MODELO BICICLETA</td>
-                                <td><input type="text" name="txtModeloBici" value="" size="30" placeholder="Ej:. Ruta Felt Carbono 105 11v Rod28 Carrera" class="form-control" required /></td>
+                                <td><input type="text" name="txtModeloBici" value="" autocomplete="off" size="30" placeholder="Ej:. Ruta Felt Carbono 105 11v Rod28 Carrera" class="form-control" required /></td>
                             </tr>
                             <tr>
                                 <td>DESCRIPCION</td>
-                                <td><textarea id="subject" name="subject" placeholder="Ingrese descripción de la bicicleta.." style="height:50px; width: 400px; resize: none;font-size: 14px" required></textarea></td>
+                                <td><textarea id="subject" name="subject" placeholder="Ingrese descripción de la bicicleta.." autocomplete="off" style="height:50px; width: 400px; resize: none;font-size: 14px" required></textarea></td>
                             </tr> -->
 
                 </div>
