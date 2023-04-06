@@ -50,7 +50,7 @@ function LimpiarformBuscar()
 
     },
     success: function (response) {
-        
+
         intervaloEnEjecucion = false;
 	
     var len = response.length;
@@ -82,7 +82,7 @@ function LimpiarformBuscar()
 	}
 	else if(opcionTablaVisitas == "1")
 	{
-		document.getElementById("tblEventos").insertRow(-1).innerHTML = '<td>N°</td><td>RUT</td><td>NOMBRE</td><td>U-LOCK</td><td>N° BICICLETA</td><td>HORA ENTRADA</td><td>HORA SALIDA</td>'
+		document.getElementById("tblEventos").insertRow(-1).innerHTML = '<td>N°</td><td>RUT</td><td>NOMBRE</td><td>U-LOCK</td><td>N° BICICLETA</td><td>MODELO</td><td>HORA ENTRADA</td><td>HORA SALIDA</td>'
 		for (var i = 0; i < len; i++) 
 		{
 		
@@ -100,6 +100,7 @@ function LimpiarformBuscar()
 			'</td><td>' + NOMBRE.toUpperCase() +
 			'</td><td>' + (CANDADO == null? '' : '<div id="divNumeroCandado" name="divNumeroBicicleta" onClick="opcionCandado(' + CANDADO +', \''+ RUT_CIC +'\')">' + CANDADO + '</div>') +
 			'</td><td>' + '<div title="'+ MODELO + ' - ' + DESCRIPCION +'">'+ BICICLETA +'</div>' +
+            '</td><td>' + MODELO.toUpperCase() +
 			'</td><td>' + (ENTRADA == null? '' : ENTRADA) +
 			'</td><td>' + (SALIDA == null? '' : SALIDA) +
 		//	'</td><td>' + (SALIDA == null? '' : SALIDA) + // PARA BICICLETAS
