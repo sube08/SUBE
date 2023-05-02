@@ -15,8 +15,8 @@ header('Content-Type: application/json');
 
     public function __construct()
     {
-       $this->objetoDato = new conexion('mysql:host=localhost;dbname=bd_sb_sube','root','fr@nc1$co');
-	$this->objetoDatoParaSP = new conexionSP('mysql:host=localhost;dbname=bd_sb_sube','root','fr@nc1$co');
+       $this->objetoDato = new conexion('mysql:host=localhost;dbname=bd_sb_sube','root','fr4nc1sc0*1+Ñw');
+	$this->objetoDatoParaSP = new conexionSP('mysql:host=localhost;dbname=bd_sb_sube','root','fr4nc1sc0*1+Ñw');
     }
 
 
@@ -30,8 +30,23 @@ header('Content-Type: application/json');
 	
 	public function NuevoClientesb($rut,$nombre,$telefono,$sexo,$fecNac,$nac,$mail,$direc,$comuna,$uvecinal,$tarjnum)
 	{
+		$usuarioSesion = 0;
+
+		session_start();
+		if($_SESSION["OPR_ID"] > 0)
+		{
+			$usuarioSesion = $_SESSION["OPR_ID"];
+		}
+		else
+		{
+			echo "Error session";
+			return null;
+		}
+
+
+
 		$this->objetoDato->conector();				
-	    $consulta = "CALL SP_INS_CLIENTE_SB ('$rut','$nombre','$telefono','$sexo','$fecNac',$nac,'$mail','$direc',$comuna,'$uvecinal','$tarjnum')";
+	    $consulta = "CALL SP_INS_CLIENTE_SB ('$rut','$nombre','$telefono','$sexo','$fecNac',$nac,'$mail','$direc',$comuna,'$uvecinal','$tarjnum', '$usuarioSesion')";
         $this->objetoDato->ejecutar($consulta);				
         $this->objetoDato->desconectar();
 		
@@ -44,9 +59,26 @@ header('Content-Type: application/json');
 	
 	public function ActualizarCliente($rutUpd, $nombreupd, $telefonoupd, $sexoupd, $emailupd, $direccionupd, $comunaupd, $numerouvupd, $nroTarjetaupd, $fecnacupd, $nacionalidadupd)
 	{
+
+		$usuarioSesion = 0;
+
+		session_start();
+		if($_SESSION["OPR_ID"] > 0)
+		{
+			$usuarioSesion = $_SESSION["OPR_ID"];
+		}
+		else
+		{
+			echo "error usuario";
+			return null;
+		}
+
+
+
+
 		$this->objetoDato->conector();
 		
-	    $consulta = "CALL SP_UPD_UPDATE_CLIENTE ('$rutUpd', '$nombreupd', '$telefonoupd', '$sexoupd', '$emailupd', '$direccionupd', '$comunaupd', '$numerouvupd', '$nroTarjetaupd', '$fecnacupd', '$nacionalidadupd')";
+	    $consulta = "CALL SP_UPD_UPDATE_CLIENTE ('$rutUpd', '$nombreupd', '$telefonoupd', '$sexoupd', '$emailupd', '$direccionupd', '$comunaupd', '$numerouvupd', '$nroTarjetaupd', '$fecnacupd', '$nacionalidadupd', '$usuarioSesion')";
         $this->objetoDato->ejecutar($consulta);			
         $this->objetoDato->desconectar();
 		$return_arr = array();
@@ -80,8 +112,10 @@ header('Content-Type: application/json');
 	*/
 	public function BuscarCliente($txtRut, $txtNombre, $txtTelefono, $cmbSexo, $txtFechaNacimiento, $cmbNacionalidad, $txtEmail, $txtDireccion, $cmbComuna, $txtNroUV, $txtNroTarjeta)
 	{
+	
+
 		$this->objetoDato->conector();
-		$votacion = $this->objetoDato->ejecutar(" SELECT * FROM TB_CIC_CICLISTA CIC INNER JOIN TB_COM_COMUNA COM ON CIC.COM_ID = COM.COM_ID INNER JOIN TB_PA_PAIS PA ON CIC.PA_ID = PA.PA_ID WHERE ('$txtRut' = 'nul' OR CIC.CIC_RUT = '$txtRut') AND ('$txtNombre' = 'nul' OR CIC.CIC_NOMBRE like '%$txtNombre%') AND ('$txtTelefono' = 'nul' OR CIC.CIC_TELEFONO = '$txtTelefono') AND ('$cmbSexo' = 'nul' OR CIC.CIC_SEXO = '$cmbSexo') AND ('$txtFechaNacimiento' = 'nul' OR CIC.CIC_FECHA_NACIMIENTO = '$txtFechaNacimiento') AND ($cmbNacionalidad = 0 OR CIC.PA_ID = $cmbNacionalidad) AND ('$txtEmail' = 'nul' OR CIC.CIC_EMAIL = '$txtEmail') AND ('$txtDireccion' = 'nul' OR CIC.CIC_DIRECCION_VECINAL = '$txtDireccion')AND ($cmbComuna = 0 OR CIC.COM_ID = $cmbComuna) AND ('$txtNroUV' = 'nul' OR CIC.CIC_NRO_UNIDAD_VECINAL = '$txtNroUV') AND ('$txtNroTarjeta' = 'nul' OR CIC.CIC_NRO_TARJETA = '$txtNroTarjeta')"); 
+		$votacion = $this->objetoDato->ejecutar(" SELECT * FROM TB_CIC_CICLISTA CIC INNER JOIN TB_COM_COMUNA COM ON CIC.COM_ID = COM.COM_ID INNER JOIN TB_PA_PAIS PA ON CIC.PA_ID = PA.PA_ID WHERE ('$txtRut' = 'nul' OR CIC.CIC_RUT = '$txtRut') AND ('$txtNombre' = 'nul' OR CIC.CIC_NOMBRE like '%$txtNombre%') AND ('$txtTelefono' = 'nul' OR CIC.CIC_TELEFONO = '$txtTelefono') AND ('$cmbSexo' = 'nul' OR CIC.CIC_SEXO = '$cmbSexo') AND ($cmbNacionalidad = 0 OR CIC.PA_ID = $cmbNacionalidad) AND ('$txtEmail' = 'nul' OR CIC.CIC_EMAIL = '$txtEmail') AND ('$txtDireccion' = 'nul' OR CIC.CIC_DIRECCION_VECINAL = '$txtDireccion')AND ($cmbComuna = 0 OR CIC.COM_ID = $cmbComuna) AND ('$txtNroUV' = 'nul' OR CIC.CIC_NRO_UNIDAD_VECINAL = '$txtNroUV') AND ('$txtNroTarjeta' = 'nul' OR CIC.CIC_NRO_TARJETA = '$txtNroTarjeta')"); 
 		$return_arr = array();
 		foreach($votacion as $vot)
 		{
@@ -221,7 +255,21 @@ $this->objetoDato->desconectar();
 	public function InsertarBicicleta($rutCic, $tagBic, $modeloBic, $descBic)
 	{
 		$this->objetoDato->conector();
-	    $consulta = "CALL SP_INS_BICICLETA('$rutCic','$modeloBic','$descBic','$tagBic')";
+
+		$usuarioSesion = 0;
+
+		session_start();
+		if($_SESSION["OPR_ID"] > 0)
+		{
+			$usuarioSesion = $_SESSION["OPR_ID"];
+		}
+		else
+		{
+			echo "SIN LOGUEAR";
+			return null;
+		}
+
+	    $consulta = "CALL SP_INS_BICICLETA('$rutCic','$modeloBic','$descBic','$tagBic', '$usuarioSesion')";
         $this->objetoDato->ejecutar($consulta);
         $this->objetoDato->desconectar();
 		

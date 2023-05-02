@@ -37,13 +37,14 @@ class conexion
 
     public function ejecutar($comando)
     {
+
         try
-        {
+        {/*
 			$textoConsulta = str_replace("'", " ", $comando);
 			$textoConsulta = substr($comando, 0, 50);
 			$ejecutar = $this->objetoConexion->prepare("INSERT INTO LOG_CONSULTAS(STRING_CONSULTA, FECHA_HORA) VALUES('$textoConsulta', now())");
             $ejecutar->execute();
-			
+	 */		
             $ejecutar = $this->objetoConexion->prepare($comando);
             $ejecutar->execute();
             $rows = $ejecutar->fetchAll();
@@ -51,7 +52,7 @@ class conexion
         }
         catch(PDOException $ex)
         {
-			echo '$ex';
+			echo $ex;
             throw $ex;
         }
     }

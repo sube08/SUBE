@@ -244,7 +244,8 @@ require_once('Conexion/Negocio.php');
 		}
 		
 		//buscar cliente 
-		else if (isset($_GET['txtRutBsc'])){
+		else if (isset($_GET['txtRutBsc']))
+		{
 
 			funcionBuscarCliente($_GET['txtRutBsc'],$_GET['txtNombre_'],$_GET['txtTelefono'],$_GET['cmbSexo'],$_GET['txtFechaNacimiento'],$_GET['cmbNacionalidad'],$_GET['txtEmail'],$_GET['txtDireccion'],$_GET['cmbComuna'],$_GET['txtNroUV'],$_GET['txtNroTarjeta']);
 			
@@ -431,6 +432,7 @@ require_once('Conexion/Negocio.php');
 	}
 	catch(Exception $ex)
 	{
+		echo $ex;
 		RegistrarLog("Funciones - " . $ex);
 	}
 	
