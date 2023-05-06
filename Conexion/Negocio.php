@@ -310,7 +310,7 @@ $this->objetoDato->desconectar();
 	public function ConsultaTagScaneado($idScanner, $tipoLector)
 	{
 		$this->objetoDato->conector();
-		$this->objetoDato->ejecutar("UPDATE TB_LEC_LECTURAS SET LEC_REVISADO = 1 WHERE TL_ID = $tipoLector  AND PL_ID = $idScanner");
+		//$this->objetoDato->ejecutar("UPDATE TB_LEC_LECTURAS SET LEC_REVISADO = 1 WHERE TL_ID = $tipoLector  AND PL_ID = $idScanner");
 		
 		//CANTIDAD DE INTENTOS DE BUSQUEDA = 5 CADA 1 SEGUNDO
 		$intentos_busq = 5;
@@ -320,7 +320,7 @@ $this->objetoDato->desconectar();
 		
 		while(($contador_busq <= $intentos_busq) && $encontrado == false)
 		{
-			$lec_scanner = $this->objetoDato->ejecutar("SELECT LEC_DATO_LEIDO FROM TB_LEC_LECTURAS LEC WHERE LEC.TL_ID = $tipoLector  AND LEC.PL_ID = $idScanner AND LEC.LEC_REVISADO = 0"); 	
+			$lec_scanner = $this->objetoDato->ejecutar("SELECT LEC_DATO_LEIDO FROM TB_LEC_LECTURAS LEC WHERE LEC.TL_ID = $tipoLector  AND LEC.PL_ID = $idScanner ORDER BY LEC_ID DESC LIMIT 1"); 	
 			
 			foreach($lec_scanner as $lec)
 			{

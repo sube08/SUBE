@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 #!/usr/bin/python
-#coding=utf-8
 #server.set_debuglevel(1)
 
 import smtplib
+from email.mime.text import MIMEText
 import mysql.connector
 import sys
 
@@ -10,15 +11,17 @@ import sys
 
 
 prm_fecha = sys.argv[1]
-print prm_fecha
+print (prm_fecha)
 
 mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        passwd="Fr4nc1sc0*1+Ñw",
-        database="bd_sb_sube"
+        password="Fr4nc1sc0*1+Ñw",
+        database="bd_sb_sube",
+        auth_plugin="mysql_native_password")
 
-)
+
+mydb.set_charset_collation('utf8mb4', 'utf8mb4_general_ci')
 
 mycursor = mydb.cursor()
 
@@ -87,7 +90,7 @@ myresult = mycursor.fetchall()
 totalMujeres = ""
 
 for x in myresult:
-        totalMujeres +=  str(x[0])
+        totalMujeres += str(x[0])
 
 
 
@@ -98,7 +101,7 @@ myresult = mycursor.fetchall()
 totalHombres = ""
 
 for x in myresult:
-        totalHombres +=  str(x[0])
+        totalHombres += str(x[0])
 
 
 
@@ -109,7 +112,7 @@ myresult = mycursor.fetchall()
 cantidadExtranjeros = ""
 
 for x in myresult:
-        cantidadExtranjeros +=  str(x[0])
+        cantidadExtranjeros += str(x[0])
 
 
 mycursor.execute(usuSetenta)
@@ -139,7 +142,7 @@ cantidadCincuenta = ""
 
 for x in myresult:
         cantidadCincuenta += str(x[0])
-	print(str(x[0]))
+
 
 
 
@@ -148,7 +151,7 @@ myresult = mycursor.fetchall()
 cantidadCuarenta = ""
 
 for x in myresult:
-        cantidadCuarenta +=  str(x[0])
+        cantidadCuarenta += str(x[0])
 
 
 
@@ -172,8 +175,8 @@ myresult = mycursor.fetchall()
 cantidadVeinte = ""
 
 for x in myresult:
-        cantidadVeinte +=  str(x[0])
-	print str(x[0])
+        cantidadVeinte += str(x[0])
+	
 
 
 
@@ -199,9 +202,8 @@ tablaNovedades = "<center><table style='width:80%; border-collapse: collapse; bo
 
 for x in myresult:
 	tablaNovedades = tablaNovedades + "<tr>"
-	tablaNovedades = tablaNovedades + "<td style='border: 1px solid black;'>"+str(x[2])+"</td><td style='border: 1px solid black;'>"+str(x[1]).replace(prm_fecha,"")+"</td><td style='border: 1px solid black;'>"+(x[0])+"</td>"
+	tablaNovedades = tablaNovedades + "<td style='border: 1px solid black;'>"+str(x[2])+"</td><td style='border: 1px solid black;'>"+str(x[1]).replace(prm_fecha,"")+"</td><td style='border: 1px solid black;'>"+str(x[0])+"</td>"
 	tablaNovedades = tablaNovedades + "</tr>"
-
 
 
 tablaNovedades = tablaNovedades + "</table></center>"
@@ -233,69 +235,31 @@ tablaDetalleHoy += "<tr><td><b>Entre 20 y 29 años</b></td><td>:"+ cantidadVeint
 tablaDetalleHoy += "<tr><td><b>Menores de 20 años</b></td><td>:"+ cantidadDiez  +"</td></tr>"
 tablaDetalleHoy += "</table>"
 
-asunto = "" + prm_fecha
+asunto = "Reporte diario -SUBE-" + prm_fecha
 
-mensaje = " <h1>Estimado(a) </h1>  <h2>a continuaci&oacute;n el reporte diario <b><i>SUBE</i></b></h2></br> "+ tablaDetalleGeneral  +" <hr/> <h4>Detalle Ingresos hoy </h4> "+ tablaDetalleHoy +"  <br/>  <center><h2>Novedades del d&iacute;a</h2></center>" + (tablaNovedades).encode('cp1252').strip() + "  <br/>  <img src='https://www.subelaflorida.cl/wp-content/uploads/2021/05/Logo-SUBE-1-1024x717.png'  style='width:150px; height:105px'/>   </br></br><p>Por favor no responda a este correo, ya que se envia desde un proceso automatizado usando una cuenta no monitoreada.</p>"
-
-
-sender = 'sube.bellavista.lf@hotmail.com'
-toaddr = ['fco.moraga.s90@gmail.com']
-cc = ['']
+mensajito = " <h1>Estimado(a) </h1>  <h2>a continuaci&oacute;n el reporte diario <b><i>SUBE</i></b></h2></br>" +str(tablaDetalleGeneral)  + "<hr/> <h4>Detalle Ingresos hoy </h4> " + str(tablaDetalleHoy) + "  <br/>  <center><h2>Novedades del d&iacute;a</h2></center>" + (tablaNovedades)+ "<br/>  <img src='https://www.subelaflorida.cl/wp-content/uploads/2021/05/Logo-SUBE-1-1024x717.png'  style='width:150px; height:105px'/>   </br></br><p>Por favor no responda a este correo, ya que se envia desde un proceso automatizado usando una cuenta no monitoreada.</p>"
 
 
-bcc = ['fjmoragase@gmail.com','jose_lavadoss@hotmail.com','sube1@fomentolaflorida.cl','abenavente@laflorida.cl','falfaro@laflorida.cl']
+servidor_smtp = 'smtp.office365.com'
+puerto_smtp = 25
+correo_emisor = 'sube.bellavista.lf@hotmail.com'
+contrasena_emisor = '$op0rTe_sube'
+
+conexion_smtp = smtplib.SMTP(servidor_smtp, puerto_smtp)
+conexion_smtp.starttls()
+conexion_smtp.login(correo_emisor, contrasena_emisor)
 
 
+mensaje = MIMEText(mensajito, 'html', 'utf-8')
+mensaje['From'] = 'SUBE BELLAVISTA LA FLORIDA <sube.bellavista.lf@hotmail.com>'
+mensaje['Bcc'] = 'fjmoragase@gmail.com, jose_lavadoss@hotmail.com, sube1@fomentolaflorida.cl, abenavente@laflorida.cl, falfaro@laflorida.cl, fco.moraga.s90@gmail.com'
+mensaje['Subject'] = asunto
+mensaje.set_payload(mensajito.encode('utf-8'))
+
+conexion_smtp.sendmail(correo_emisor, ['fjmoragase@gmail.com','jose_lavadoss@hotmail.com','sube1@fomentolaflorida.cl','abenavente@laflorida.cl','falfaro@laflorida.cl','fco.moraga.s90@gmail.com'], mensaje.as_string())
 
 
-message = """From: SUBE BELLAVISTA LA FLORIDA <""" + sender  +""">
-To:;
-MIME-Version: 1.0
-Content-type: text/html
-Subject: Reporte diario -SUBE- """ + asunto + """
-
-""" + mensaje + """
-"""
-
-try:
-
-   toaddrs = [toaddr] + cc + bcc
-
-
-   smtpObj = smtplib.SMTP('smtp.office365.com:25')
-   smtpObj.starttls()
-   smtpObj.login('sube.bellavista.lf@hotmail.com','$op0rTe_sube')
-
-   #smtpObj.set_debuglevel(1)
-   smtpObj.sendmail(sender, toaddrs, message)
-   print ("Successfully sent email")
-except SMTPException:
-   print ("Error: unable to send email")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+conexion_smtp.quit()
 
 
 
