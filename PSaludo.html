@@ -1,105 +1,58 @@
 <html>
+
 <head>
-<link rel="stylesheet" type="text/css" href="CSS/style.css">
-<script src="js/jquery.js"></script>
-<script src="js/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous"></script>
 </head>
+
 <body bgcolor=black>
-<video class="elementor-video" src="VIDEO/SUBE-3.mp4" controls autoplay, loop style="width:100%; height:100%" controlsList="nodownload"></video>
+	<video class="elementor-video" src="VIDEO/SUBE-3.mp4" controls autoplay, loop style="width:100%; height:100%" controlsList="nodownload"></video>
 
-
-<div id="modal_saludo" class="w3-modal-saludo">
-        <div class="w3-modal-content-saludo">
-            <div class="w3-container-saludo">
+	<div id="modal_saludo" class="w3-modal-saludo">
+		<div class="w3-modal-content-saludo">
+			<div class="w3-container-saludo">
 				<div id=contenido_saludo>
-				
+
 					<p class="bienvenido"><b>Bienvenido(a)</b></p>
 					<p align="right" class="nombrecic"><b>Francisco Moraga&nbsp;</b></p>
-<footer>
-<div id="logo" name="logo">
-	</div>
-	</footer>
+					<footer>
+						<div id="logo" name="logo">
+						</div>
+					</footer>
 				</div>
-								
 			</div>
-
-
-
-			
-									
-
-			
-			
 		</div>
-</div>
+	</div>
 
+	<script>
+		var ultimoIdMov = 0;
 
+		setInterval(function () {
+			$.ajax({
+				type: 'GET',
+				url: 'funciones.php',
+				data: { "idPosLector": 1 },
+				error: function (jqXHR, textStatus, errorThrown) {
+				},
+				success: function (response) {
 
+					if (parseInt(response[0].MOV_ID, 10) > ultimoIdMov) {
+						$(".nombrecic").text(response[0].CIC_NOMBRE);
+						document.getElementById('modal_saludo').style.display = 'block';
+						ultimoIdMov = parseInt(response[0].MOV_ID, 10);
+						setTimeout(function () {
 
+							document.getElementById('modal_saludo').style.display = 'none';
 
+						}, 3000);
+					}
+				}
+			});
 
+		}, 1000);
 
-
-
-
-<script>
-
-
-var ultimoIdMov = 0;
-
-  setInterval(function()
-  { 
-	$.ajax({
-    type: 'GET',
-    url: 'funciones.php',
-    data: {"idPosLector":1},
-    error: function (jqXHR, textStatus, errorThrown) {
-
-    },
-    success: function (response) {
-	
-		if(parseInt(response[0].MOV_ID, 10) > ultimoIdMov)
-		{
-			$(".nombrecic").text(response[0].CIC_NOMBRE);
-			document.getElementById('modal_saludo').style.display = 'block';
-			ultimoIdMov = parseInt(response[0].MOV_ID, 10);
-			setTimeout(function(){
-
- document.getElementById('modal_saludo').style.display = 'none';
- 
- }, 3000);
-		}
-	
-
-    }
-    });
-  
-  }, 1000);
-
-
-
- 
- 
-
- 
- 
- 
- 
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	</script>
 </body>
 </html>
