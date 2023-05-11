@@ -1,4 +1,0 @@
-[22-08-2021 00:14:52] Inicio Sesion:parking
-[22-08-2021 00:15:09] CONSULTAR RUT: 15.134.329-5
-[22-08-2021 00:17:00] REGISTRAR CICLISTA: 15.134.329-5 NOMBRE:Jose Lavados
-[22-08-2021 00:20:57] No se encontró función para los parametros ingresados
