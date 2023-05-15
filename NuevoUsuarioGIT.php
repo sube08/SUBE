@@ -164,7 +164,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
-                                <input type="date" id="txtFechaNacimiento" name="txtFechaNacimiento" value="1990-1-1" min=<?php echo date("Y-m-d",strtotime($fecha_actual." - 100 year")); ?> max="<?php echo date("Y-m-d",strtotime($fecha_actual." - 7 year"));  ?>" size="30" class="form-control form-control-sm" required />
+                                <input type="date" id="txtFechaNacimiento" name="txtFechaNacimiento" value="1990-1-1" min=<? echo date("Y-m-d",strtotime($fecha_actual." - 100 year")); ?> max="<?php echo date("Y-m-d",strtotime($fecha_actual." - 7 year"));  ?>" size="30" class="form-control form-control-sm" required />
                             </div>
                         </div>
 
