@@ -1,0 +1,2 @@
+[17-05-2023 00:36:28] Inicio Sesion:parking
+[17-05-2023 00:36:49] Insertar lectura Dato leido: 11 00 EE 00 E2 80 11 70 00 00 02 16 EE C7 8B 75 52 FB ; posicion: 1 ; tipo: 2

@@ -220,9 +220,9 @@ require_once('Conexion/Negocio.php');
 	
 	function RegistrarLog($evento)
 	{
-//		$fichero = fopen("LOG/LOG_" . date("d-m-Y") . ".txt", "a");
-//		fputs($fichero, "[" . date("d-m-Y H:i:s") . "] ". $evento ."\n");
-//		fclose($fichero);
+		$fichero = fopen(__DIR__ . "/../LOG/LOG_" . date("d-m-Y") . ".txt", "a");
+		fputs($fichero, "[" . date("d-m-Y H:i:s") . "] ". $evento ."\n");
+	fclose($fichero);
 	}
 	
 	
