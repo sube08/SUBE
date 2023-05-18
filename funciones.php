@@ -263,11 +263,20 @@ require_once('Conexion/Negocio.php');
 				
 		else if (isset($_POST['txtDatoLeido']) && (isset($_POST['txtPosicion'])) && (isset($_POST['txtTipo']))) 
 		{
+
+			$datoLeidoPost = $_POST['txtDatoLeido'];
+		
+			if($_POST['txtTipo'] == '2')
+			{
+				$conjuntos = explode(' ', $datoLeidoPost);
+				$datoLeidoPost = implode(' ', array_slice($conjuntos,0, 18));
+			}
+
 			
 			try
 			{	
-				RegistrarLog("Insertar lectura Dato leido: " . $_POST['txtDatoLeido'] . " ; posicion: " . $_POST['txtPosicion'] . " ; tipo: " . $_POST['txtTipo']);
-				funcionInsertarLectura($_POST['txtDatoLeido'], $_POST['txtPosicion'], $_POST['txtTipo']);	
+				RegistrarLog("Insertar lectura Dato leido: " . $datoLeidoPost . " ; posicion: " . $_POST['txtPosicion'] . " ; tipo: " . $_POST['txtTipo']);
+				funcionInsertarLectura($datoLeidoPost, $_POST['txtPosicion'], $_POST['txtTipo']);	
 			}
 			catch(Exception $ex)
 			{
