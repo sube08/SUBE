@@ -87,6 +87,10 @@ require_once('Conexion/Negocio.php');
 	{
 		$objetoProcesos = new Negocio();
 		
+		$datoLeido = trim($datoLeido);
+		$datoLeido = substr($datoLeido, 0, 53);
+		$datoLeido = trim($datoLeido);
+
 		$objetoProcesos->InsertarLectura($datoLeido, $posicion, $tipoLector);
 	}
 	
