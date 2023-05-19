@@ -349,6 +349,7 @@ require_once('Conexion/Negocio.php');
 		else if (isset($_GET['txtDatoLeido']) && (isset($_GET['txtPosicion'])) && (isset($_GET['txtTipo']))) {
 			
 			funcionInsertarLectura($_GET['txtDatoLeido'], $_GET['txtPosicion'], $_GET['txtTipo']);
+			RegistrarLog("Tarjeta ingresada: " . $_GET['txtDatoLeido']. " Posicion:" . $_GET['txtPosicion'] . " TipoLectora:" . $_GET['txtTipo']);
 			echo 'OK 1';
 			
 		}
@@ -396,6 +397,8 @@ require_once('Conexion/Negocio.php');
 		else if (isset($_GET['idRutMM']) && (isset($_GET['horaMovimiento'])) && (isset($_GET['idTipoMovimientoMM'])))
 		{
 			RegistrarMovimientoCiclistaManual($_GET['idRutMM'], $_GET['horaMovimiento'], $_GET['idTipoMovimientoMM'], $_GET['cmbBicicleta']);
+
+			RegistrarLog("Ingreso manual: ". $_GET['idRutMM']);
 		}
 		else if(isset($_GET['rutObtBic']))
 		{
