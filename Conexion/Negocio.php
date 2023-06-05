@@ -121,19 +121,19 @@ header('Content-Type: application/json');
 		{
 			
 			 $return_arr[] = array(
-					"CIC_RUT" => $vot[0],
-                    "CIC_NOMBRE" => $vot[1],
-                    "CIC_TELEFONO" => $vot[2],
-					"CIC_SEXO" => $vot[3],
-					"CIC_FECHA_NACIMIENTO" => $vot[4],
-					"CIC_EMAIL" => $vot[5],
-					"CIC_DIRECCION_VECINAL" => $vot[6],
-					"COM_ID" => $vot[7],
-					"COM_DESCRIPCION" => $vot[13],
-					"CIC_NRO_UNIDAD_VECINAL" => $vot[9],
-					"CIC_NRO_TARJETA" => $vot[11],
-                             		"ID_NACIONALIDAD" => $vot[8],
-					"NACIONALIDAD_E" => $vot[15]);			
+					"CIC_RUT" => $vot['CIC_RUT'],
+                    "CIC_NOMBRE" => $vot['CIC_NOMBRE'],
+                    "CIC_TELEFONO" => $vot['CIC_TELEFONO'],
+					"CIC_SEXO" => $vot['CIC_SEXO'],
+					"CIC_FECHA_NACIMIENTO" => $vot['CIC_FECHA_NACIMIENTO'],
+					"CIC_EMAIL" => $vot['CIC_EMAIL'],
+					"CIC_DIRECCION_VECINAL" => $vot['CIC_DIRECCION_VECINAL'],
+					"COM_ID" => $vot['COM_ID'],
+					"COM_DESCRIPCION" => $vot['COM_NOMBRE'],
+					"CIC_NRO_UNIDAD_VECINAL" => $vot['CIC_NRO_UNIDAD_VECINAL'],
+					"CIC_NRO_TARJETA" => $vot['CIC_NRO_TARJETA'],
+                             		"ID_NACIONALIDAD" => $vot['PA_ID'],
+					"NACIONALIDAD_E" => $vot['PA_NOMBRE']);			
 		}
 		echo json_encode($return_arr);
         $this->objetoDato->desconectar();
