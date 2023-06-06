@@ -477,7 +477,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-group"></i></div>
                                 </div>
-                                <select style="width: 400px" id="comoSeEntero" name="comoSeEntero" class="form-select form-select-sm" onchange="habilitarOtros()" required>
+                                <select style="width: 400px" id="slcComoSeEntero" name="slcComoSeEntero" class="form-select form-select-sm" onchange="habilitarOtros()" required>
 				<option value="">-Seleccionar-</option>
 				<option value="Familiares / Amigos / Colegas">Familiares / Amigos / Colegas</option>
 				<option value="Redes Sociales">Redes Sociales</option>
@@ -491,7 +491,7 @@
 				<option value="Trabaja cerca">Trabaja cerca</option>
 				<option value="0">Otro</option>
 				</select>
-				<input type="text" id="otroComoSeEntero" class="form-control form-control-sm" name="otroComoSeEntero" placeholder="¿Cómo se enteró?" disabled>
+				<input type="text" id="txtComoSeEntero" class="form-control form-control-sm" name="txtComoSeEntero" placeholder="¿Cómo se enteró?" disabled>
                             </div>
                         </div>
                     </div>
@@ -538,8 +538,8 @@
 	
 	function habilitarOtros() 
 	{
-  		var selectElement = document.getElementById("comoSeEntero");
-  		var otrosInput = document.getElementById("otroComoSeEntero");
+  		var selectElement = document.getElementById("slcComoSeEntero");
+  		var otrosInput = document.getElementById("txtComoSeEntero");
   
 	  	if (selectElement.value === "0") 
 		{
