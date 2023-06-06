@@ -472,12 +472,26 @@
                         </div>
 
                         <div class="col">
-                            <label>UNIDAD VECINAL</label>
+                            <label>¿Cómo se enteró?</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-group"></i></div>
                                 </div>
-                                <input type="text" id="txtNroUV" name="txtNroUV" maxlength="4" value="" size="30" placeholder="Ej: 1416" class="form-control form-control-sm" required />
+                                <select style="width: 400px" id="comoSeEntero" name="comoSeEntero" class="form-select form-select-sm" onchange="habilitarOtros()" required>
+				<option value="">-Seleccionar-</option>
+				<option value="Familiares / Amigos / Colegas">Familiares / Amigos / Colegas</option>
+				<option value="Redes Sociales">Redes Sociales</option>
+				<option value="Noticias / Diario">Noticias / Diario</option>
+				<option value="De paso por el lugar">De paso por el lugar</option>
+				<option value="Vió Chip en otra Bicicleta">Vió Chip en otra Bicicleta</option>
+				<option value="App Vive La Florida">App Vive La Florida</option>
+				<option value="Afiche municipal">Afiche municipal</option>
+				<option value="Por personal municiapal">Por personal municiapal</option>
+				<option value="Funcionario Municipal">Funcionario Municipal</option>
+				<option value="Trabaja cerca">Trabaja cerca</option>
+				<option value="0">Otro</option>
+				</select>
+				<input type="text" id="otroComoSeEntero" class="form-control form-control-sm" name="otroComoSeEntero" placeholder="¿Cómo se enteró?" disabled>
                             </div>
                         </div>
                     </div>
@@ -520,11 +534,24 @@
 
     <script src="js/Principal.js"></script>
     <script type="text/javascript">
+	
+	
+	function habilitarOtros() 
+	{
+  		var selectElement = document.getElementById("comoSeEntero");
+  		var otrosInput = document.getElementById("otroComoSeEntero");
+  
+	  	if (selectElement.value === "0") 
+		{
+    			otrosInput.disabled = false;
+  		} else 
+		{
+    			otrosInput.disabled = true;
+  		}
+	}			  
+	
+				  
         $(document).ready(function () {
-
-
-
-
 
             //OBTIENE CODIGO NFC EN REGISTRO
             $('#scanerusrRegNFC').click(function (e) {
