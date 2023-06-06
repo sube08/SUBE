@@ -28,7 +28,7 @@ header('Content-Type: application/json');
 		echo json_encode($respConsulta);
 	}
 	
-	public function NuevoClientesb($rut,$nombre,$telefono,$sexo,$fecNac,$nac,$mail,$direc,$comuna,$uvecinal,$tarjnum)
+	public function NuevoClientesb($rut,$nombre,$telefono,$sexo,$fecNac,$nac,$mail,$direc,$comuna,$uvecinal,$tarjnum, $comoSeEntero)
 	{
 		$usuarioSesion = 0;
 
@@ -46,7 +46,7 @@ header('Content-Type: application/json');
 
 
 		$this->objetoDato->conector();				
-	    $consulta = "CALL SP_INS_CLIENTE_SB ('$rut','$nombre','$telefono','$sexo','$fecNac',$nac,'$mail','$direc',$comuna,'$uvecinal','$tarjnum', '$usuarioSesion')";
+	    $consulta = "CALL SP_INS_CLIENTE_SB ('$rut','$nombre','$telefono','$sexo','$fecNac',$nac,'$mail','$direc',$comuna,'$uvecinal','$tarjnum', '$usuarioSesion', '$comoSeEntero')";
         $this->objetoDato->ejecutar($consulta);				
         $this->objetoDato->desconectar();
 		
