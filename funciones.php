@@ -61,9 +61,14 @@ require_once('Conexion/Negocio.php');
 		$objetoProcesos->NuevoCliente($rut,$nombre,$telefono,$sexo,$fecNac,$nac,$mail,$direc,$comuna,$uvecinal,$tarjnum,$tagnum,$modBici,$desc);
 	}
 	
-	function funcionNuevoClientesb($rut,$nombre,$telefono,$sexo,$fecNac,$nac,$mail,$direc,$comuna,$uvecinal,$tarjnum, $comoSeEntero)
+	function funcionNuevoClientesb($rut,$nombre,$telefono,$sexo,$fecNac,$nac,$mail,$direc,$comuna,$uvecinal,$tarjnum, $slcComoSeEntero, $txtOtroComoSeEntero)
 	{
 		$objetoProcesos = new Negocio();
+		$comoSeEntero = $slcComoSeEntero;
+		if($slcComoSeEntero == "0")
+		{
+			$comoSeEntero = $txtOtroComoSeEntero;
+		}
 		
 		$objetoProcesos->NuevoClientesb($rut,$nombre,$telefono,$sexo,$fecNac,$nac,$mail,$direc,$comuna,$uvecinal,$tarjnum, $comoSeEntero);
 	}
@@ -243,7 +248,7 @@ require_once('Conexion/Negocio.php');
 		
 		else if (isset($_GET['txtRut_'])) {
 			RegistrarLog("REGISTRAR CICLISTA: " . $_GET['txtRut_'] . " NOMBRE:" . $_GET['txtNombre_']);
-			funcionNuevoClientesb($_GET['txtRut_'],$_GET['txtNombre_'],$_GET['txtTelefono'],$_GET['cmbSexo'],$_GET['txtFechaNacimiento'],$_GET['cmbNacionalidad'],$_GET['txtEmail'],$_GET['txtDireccion'],$_GET['cmbComuna'],$_GET['txtNroUV'],$_GET['txtNroTarjeta'],$_GET['txtComoSeEntero']);
+			funcionNuevoClientesb($_GET['txtRut_'],$_GET['txtNombre_'],$_GET['txtTelefono'],$_GET['cmbSexo'],$_GET['txtFechaNacimiento'],$_GET['cmbNacionalidad'],$_GET['txtEmail'],$_GET['txtDireccion'],$_GET['cmbComuna'],$_GET['txtNroUV'],$_GET['txtNroTarjeta'],$_GET['slcComoSeEntero'],$_GET['txtComoSeEntero']);
 			
 		}
 		
