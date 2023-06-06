@@ -46,7 +46,7 @@ header('Content-Type: application/json');
 
 
 		$this->objetoDato->conector();				
-	    $consulta = "CALL SP_INS_CLIENTE_SB ('$rut','$nombre','$telefono','$sexo','$fecNac',$nac,'$mail','$direc',$comuna,'$uvecinal','$tarjnum', '$usuarioSesion', '$comoSeEntero')";
+	    $consulta = "CALL SP_INS_CLIENTE_SB ('$rut','$nombre','$telefono','$sexo','$fecNac',$nac,'$mail','$direc',$comuna,0,'$tarjnum', '$usuarioSesion', '$comoSeEntero')";
         $this->objetoDato->ejecutar($consulta);				
         $this->objetoDato->desconectar();
 		
