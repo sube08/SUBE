@@ -403,7 +403,7 @@ require_once('Conexion/Negocio.php');
 		{
 			RegistrarMovimientoCiclistaManual($_GET['idRutMM'], $_GET['horaMovimiento'], $_GET['idTipoMovimientoMM'], $_GET['cmbBicicleta']);
 
-			RegistrarLog("Ingreso manual: ". $_GET['idRutMM']);
+			RegistrarLog("Ingreso manual: ". $_GET['idRutMM'] . " tipoMov: " . $_GET['idTipoMovimientoMM'] . " bici: " . $_GET['cmbBicicleta']);
 		}
 		else if(isset($_GET['rutObtBic']))
 		{
