@@ -491,7 +491,7 @@
 				<option value="Trabaja cerca">Trabaja cerca</option>
 				<option value="0">Otro</option>
 				</select>
-                                <input type="text" id="txtComoSeEntero" class="form-control form-control-sm" name="txtComoSeEntero" maxlength="50" placeholder="¿Cómo se enteró?" disabled>
+                                <input type="text" id="txtComoSeEntero" class="form-control form-control-sm" name="txtComoSeEntero" maxlength="50" placeholder="¿Cómo se enteró?" disabled required>
                             </div>
                         </div>
                     </div>
