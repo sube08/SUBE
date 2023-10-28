@@ -299,7 +299,7 @@ $this->objetoDato->desconectar();
 			return null;
 		}
 
-	    $consulta = "UPDATE TB_BIC_BICICLETA SET BIC_MODELO = '$modeloBic', BIC_NRO_TAG = '$tagBic' , BIC_DESCRIPCION = '$descBic', BIC_FECHA_UPDATE = NOW(), OPR_ID_UPDATE = '$usuarioSesion' WHERE BIC_ID = $idBicicleta)";
+	    $consulta = "UPDATE TB_BIC_BICICLETA SET BIC_MODELO = '$modeloBic', BIC_NRO_TAG = '$tagBic' , BIC_DESCRIPCION = '$descBic', BIC_FECHA_UPDATE = NOW(), OPR_ID_UPDATE = '$usuarioSesion' WHERE BIC_ID = $idBicicleta";
         $this->objetoDato->ejecutar($consulta);
         $this->objetoDato->desconectar();
 		
