@@ -537,6 +537,11 @@
                                 <br />
 
                                 <div class="container">
+
+					<div class="row">
+					<label id="lblIdBic" name="lblIdBic"></label>
+					</div>
+					
                                     <div class="row">
                                         <div class="col">
                                             <label>Cod. TAG</label>
