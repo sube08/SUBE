@@ -90,6 +90,7 @@ require_once('Conexion/Negocio.php');
 
 	function funcionEditarBicicleta($idBicicleta, $tagBic, $modeloBic, $descBic)
 	{
+		echo "2";
 		$objetoProcesos = new Negocio();
 		
 		$objetoProcesos->EditarBicicleta($idBicicleta, $tagBic, $modeloBic, $descBic);
@@ -355,8 +356,11 @@ require_once('Conexion/Negocio.php');
 		//nueva bicicleta
 		else if (isset($_GET['rutCic']) && (isset($_GET['tagBic'])) && (isset($_GET['modeloBic']))) {
 
+			echo "uno";
+			
 			if(isset($_GET['idBicicleta']) && $_GET['idBicicleta'] != "")
 			   {
+				   echo "uno -1";
 			   	funcionEditarBicicleta($_GET['idBicicleta'], $_GET['tagBic'], $_GET['modeloBic'], $_GET['descBic']);
 			   }
 			else
