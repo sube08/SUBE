@@ -288,7 +288,8 @@ function buscarBicicletas(rut)
 	document.getElementById("tblBicCic").insertRow(-1).innerHTML = '<tr><td class="tdClientes"><font size=2 face="Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif">Bic Id</font></td>' +
                                                 '<td class="tdClientes"><font size=2 face="Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif">Cod Tag</font></td>' +
                                                 '<td class="tdClientes"><font size=2 face="Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif">Marca/Modelo</font></td>'+
-                                                '<td class="tdClientes"><font size=2 face="Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif">Descripción</font></td>';
+						'<td class="tdClientes"><font size=2 face="Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif">Descripción</font></td>' +
+                                                '<td class="tdClientes"><font size=2 face="Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif">Accion</font></td>';
 			
 	$.ajax({
     type: 'GET',
@@ -313,7 +314,7 @@ function buscarBicicletas(rut)
 		'</font></td><td class="tdClientes"><font size=2 face="Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif">' + NRO_TAG +
 		'</font></td><td class="tdClientes"><font size=2 face="Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif">' + MODELO +
 		'</font></td><td class="tdClientes"><font size=2 face="Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif">' + DESCR +
-		'</font></td>';
+		'</font></td><td><button id="btnEditarBicicleta" name="btnEditarBicicleta" onClick="EditarBicicleta(' + BIC_ID + ', \'' + NRO_TAG + '\', \'' + MODELO + '\', \'' + DESCR +'\')">Editar</button></td>';
                      
     }
 
@@ -321,6 +322,18 @@ function buscarBicicletas(rut)
     });
 	
 }
+
+function EditarBicicleta(id, nroTag, modelo, descripcion)
+{	
+	console.log(id + " "+ nroTag + " " + modelo + descripcion);
+	
+	$("#lblIdBic").html("" + id);
+	$("#tagBic").var("" + nroTag);
+	$("#modeloBic").var("" + modelo);
+	$("#descBic").var("" + descripcion);
+}
+
+
 
 
 //BUSCAR VISITAS POR CICLISTAS
