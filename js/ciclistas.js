@@ -328,9 +328,9 @@ function EditarBicicleta(id, nroTag, modelo, descripcion)
 	console.log(id + " "+ nroTag + " " + modelo + descripcion);
 	
 	$("#lblIdBic").html("" + id);
-	$("#tagBic").var("" + nroTag);
-	$("#modeloBic").var("" + modelo);
-	$("#descBic").var("" + descripcion);
+	$("#tagBic").val("" + nroTag);
+	$("#modeloBic").val("" + modelo);
+	$("#descBic").val("" + descripcion);
 }
 
 
