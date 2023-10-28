@@ -258,7 +258,16 @@ $('#GuardaBic').click(function (e) {
                         document.getElementById("GuardaBic").disabled = false;
         },
         success: function (response) {
+
+		if(idBicicleta == "")
+		{
 			swal({title:'Exito',text:'Bicicleta agregada correctamente',type:'success'});
+		}
+		else
+		{
+			swal({title:'Exito',text:'Bicicleta actualizada correctamente',type:'success'});
+		}
+			
                         document.getElementById("GuardaBic").disabled = false;
             //alert("Bicicleta agregada correctamente");
 
