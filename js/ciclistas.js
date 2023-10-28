@@ -232,12 +232,14 @@ $('#GuardarObs').click(function (e) {
  //AJAX AGREGAR BICICLETA
 $('#GuardaBic').click(function (e) {
     document.getElementById("GuardaBic").disabled = true;
-	
+
+    let idBicicleta = $("#lblIdBic").html();
     var rutCic = document.getElementById("txtRutSeleccionado").value;
     var tagBic = document.getElementById("tagBic").value;
     var modeloBic = document.getElementById("modeloBic").value;
     var descBic = document.getElementById("descBic").value; 
 
+	console.log("Id bicicleta: " + idBicicleta);
 	
 	e.preventDefault();
         
@@ -247,6 +249,7 @@ $('#GuardaBic').click(function (e) {
         url: 'funciones.php',
         data: {"rutCic": rutCic,
 		"tagBic": tagBic,
+	       	"idBicicleta" : idBicicleta;
 		"modeloBic": modeloBic,
 		"descBic": descBic },
         error: function (jqXHR, textStatus, errorThrown) {
