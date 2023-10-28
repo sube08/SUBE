@@ -271,6 +271,7 @@ $('#GuardaBic').click(function (e) {
                         document.getElementById("GuardaBic").disabled = false;
             //alert("Bicicleta agregada correctamente");
 
+	    $("#lblIdBic").html("");
             document.getElementById("tagBic").value = "";
             document.getElementById("modeloBic").value = "";
             document.getElementById("descBic").value = "";
