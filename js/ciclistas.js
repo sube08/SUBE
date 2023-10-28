@@ -249,7 +249,7 @@ $('#GuardaBic').click(function (e) {
         url: 'funciones.php',
         data: {"rutCic": rutCic,
 		"tagBic": tagBic,
-	       	"idBicicleta" : idBicicleta;
+	       	"idBicicleta" : idBicicleta,
 		"modeloBic": modeloBic,
 		"descBic": descBic },
         error: function (jqXHR, textStatus, errorThrown) {
