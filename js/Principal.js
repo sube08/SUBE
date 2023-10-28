@@ -394,7 +394,7 @@ function buscarBicicletas(rut)
 {
 	$("#tblBicCic").empty();
 	  
-	document.getElementById("tblBicCic").insertRow(-1).innerHTML = '<tr><td>ID BIC</td><td>TAG NRO</td><td>MODELO BICICLETA</td><td>DESCRIPCION</td>';
+	document.getElementById("tblBicCic").insertRow(-1).innerHTML = '<tr><td>ID BIC</td><td>TAG NRO</td><td>MODELO BICICLETA</td><td>DESCRIPCION</td><td>FUNCION</td>';
 	var res = checkearRutCic(rut, 1);
 	
 	
@@ -424,7 +424,7 @@ function buscarBicicletas(rut)
 		'</td><td>' + NRO_TAG +
 		'</td><td>' + MODELO +
 		'</td><td>' + DESCR +
-		'</td>';
+		'</td><td><button id="btnEditarBicicleta" name="btnEditarBicicleta" onClick="EditarBicicleta(' + BIC_ID + ', \'' + NRO_TAG + '\', \'' + MODELO + '\', \'' + DESCR +'\')">Editar</button></td>';
                      
     }
 
@@ -433,7 +433,15 @@ function buscarBicicletas(rut)
 	
 }
 
-
+function EditarBicicleta(id, nroTag, modelo, descripcion)
+{	
+	console.log(id + " "+ nroTag + " " + modelo + descripcion);
+	
+	$("#lblIdBic").html("" + id);
+	$("#tagBic").var("" + nroTag);
+	$("#modeloBic").var("" + modelo);
+	$("#descBic").var("" + descripcion);
+}
 
 
 function checkDV2A(crut) {
