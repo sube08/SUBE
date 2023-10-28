@@ -282,7 +282,7 @@ $this->objetoDato->desconectar();
 
 
 //Actualizar bicicleta
-	public function ActualizarBicicleta($idBicicleta, $tagBic, $modeloBic, $descBic)
+	public function EditarBicicleta($idBicicleta, $tagBic, $modeloBic, $descBic)
 	{
 		$this->objetoDato->conector();
 
