@@ -280,6 +280,38 @@ $this->objetoDato->desconectar();
 	}
 
 
+
+//Actualizar bicicleta
+	public function ActualizarBicicleta($idBicicleta, $tagBic, $modeloBic, $descBic)
+	{
+		$this->objetoDato->conector();
+
+		$usuarioSesion = 0;
+
+		session_start();
+		if($_SESSION["OPR_ID"] > 0)
+		{
+			$usuarioSesion = $_SESSION["OPR_ID"];
+		}
+		else
+		{
+			echo "SIN LOGUEAR";
+			return null;
+		}
+
+	    $consulta = "UPDATE TB_BIC_BICICLETA SET BIC_MODELO = '$modeloBic', BIC_NRO_TAG = '$tagBic' , BIC_DESCRIPCION = '$descBic', BIC_FECHA_UPDATE = NOW(), OPR_ID_UPDATE = '$usuarioSesion' WHERE BIC_ID = $idBicicleta)";
+        $this->objetoDato->ejecutar($consulta);
+        $this->objetoDato->desconectar();
+		
+	$return_arr = array();
+	$return_arr[] = array("RESULTADO" => "OK");
+	echo json_encode($return_arr);
+		
+	}
+
+	
+
+
 	//Insertar Movimiento Manual
 	public function RegistrarMovimientoCiclistaManual($rutRegistro, $horaRegistro, $tipoRegistro, $idBicicleta)
 	{
