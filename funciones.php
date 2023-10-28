@@ -355,16 +355,14 @@ require_once('Conexion/Negocio.php');
 		//nueva bicicleta
 		else if (isset($_GET['rutCic']) && (isset($_GET['tagBic'])) && (isset($_GET['modeloBic']))) {
 
-			if(isset($_GET['idBicicleta'] && $_GET['idBicicleta'] != "")
+			if(isset($_GET['idBicicleta']) && $_GET['idBicicleta'] != "")
 			   {
 			   	funcionEditarBicicleta($_GET['idBicicleta'], $_GET['tagBic'], $_GET['modeloBic'], $_GET['descBic']);
 			   }
-		else
-		{
-			funcionInsertarBicicleta($_GET['rutCic'], $_GET['tagBic'], $_GET['modeloBic'], $_GET['descBic']);
-		}
-			
-			
+			else
+			{
+				funcionInsertarBicicleta($_GET['rutCic'], $_GET['tagBic'], $_GET['modeloBic'], $_GET['descBic']);
+			}
 			
 		}
 		
