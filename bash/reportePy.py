@@ -252,9 +252,9 @@ tablaDetalleHoy += "<tr><td><b>Entre 20 y 29 años</b></td><td>:"+ cantidadVeint
 tablaDetalleHoy += "<tr><td><b>Menores de 20 años</b></td><td>:"+ cantidadDiez  +"</td></tr>"
 tablaDetalleHoy += "</table>"
 
-asunto = "Reporte diario -SUBE-56" + prm_fecha
+asunto = "Reporte diario -SUBE-" + prm_fecha
 
-mensajito = " <h1>Estimado(a) </h1>  <h2>a continuaci&oacute;n el reporte diario <b><i>SUBE</i></b></h2></br>" +str(tablaDetalleGeneral)  + "<hr/> <h4>Detalle Ingresos hoy </h4> " + str(tablaDetalleHoy) + "  <br/>  <center><h2>Novedades del d&iacute;a</h2></center>" + (tablaNovedades)+ "<br/>" + (tablaAnotaciones) + "<br/>  <img src='https://www.fomentolaflorida.cl/app/images/Logo-SUBE.png'  style='width:150px; height:105px'/>   </br></br><p>Por favor no responda a este correo, ya que se envia desde un proceso automatizado usando una cuenta no monitoreada.</p>"
+mensajito = " <h1>Estimado(a) </h1>  <h2>a continuaci&oacute;n el reporte diario <b><i>SUBE</i></b></h2></br>" +str(tablaDetalleGeneral)  + "<hr/> <h4>Detalle Ingresos hoy </h4> " + str(tablaDetalleHoy) + "  <br/>  <center><h2>Novedades del d&iacute;a</h2></center>" + (tablaNovedades)+ "<br/><center><h2>Anotaciones ciclistas</h2></center>" + (tablaAnotaciones) + "<br/>  <img src='https://www.fomentolaflorida.cl/app/images/Logo-SUBE.png'  style='width:150px; height:105px'/>   </br></br><p>Por favor no responda a este correo, ya que se envia desde un proceso automatizado usando una cuenta no monitoreada.</p>"
 
 
 servidor_smtp = 'smtp.office365.com'
@@ -269,7 +269,7 @@ conexion_smtp.login(correo_emisor, contrasena_emisor)
 
 mensaje = MIMEText(mensajito, 'html', 'utf-8')
 mensaje['From'] = 'SUBE BELLAVISTA LA FLORIDA <sube.bellavista.lf@hotmail.com>'
-mensaje['Bcc'] = 'fjmoragase@gmail.com'
+mensaje['Bcc'] = 'fjmoragase@gmail.com, jose_lavadoss@hotmail.com, sube1@fomentolaflorida.cl, abenavente@laflorida.cl, falfaro@laflorida.cl, fco.moraga.s90@gmail.com'
 mensaje['Subject'] = asunto
 mensaje.set_payload(mensajito.encode('utf-8'))
 
