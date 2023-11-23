@@ -53,6 +53,13 @@ require_once('Conexion/Negocio.php');
 		$objetoProcesos->BuscarCic($txtRut);
 	}
 
+	function ConsultaBip($nroTarjeta)
+	{
+		$objetoProcesos = new Negocio();
+		
+		$objetoProcesos->ConsultaBipEscaneada($nroTarjeta);
+	}
+
  
     function funcionNuevoCliente($rut,$nombre,$telefono,$sexo,$fecNac,$nac,$mail,$direc,$comuna,$uvecinal,$tarjnum,$tagnum,$modBici,$desc)
 	{
@@ -459,6 +466,10 @@ require_once('Conexion/Negocio.php');
 		else if (isset($_GET['idPosLector']))
 		{
 			funcionGetUltimoCiclista($_GET['idPosLector']);
+		}
+		else if (isset($_GET['NroTarjetaConsulta']))
+		{
+			ConsultaBip($_GET['NroTarjetaConsulta']);
 		}
 		else{
 		

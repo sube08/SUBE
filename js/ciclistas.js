@@ -791,6 +791,10 @@ function UpdateRegistros() {
 
             $('#ActualizarCliente').click(function (e) {
 
+                e.preventDefault();
+
+                console.log("1");
+
 
                 var rut_bsc = document.getElementById("txtRut_bsc").value;
                 var nombre_bsc = document.getElementById("txtNombre_bsc").value;
@@ -805,6 +809,10 @@ function UpdateRegistros() {
                 var pais_bsc = document.getElementById("cmbNacionalidad").value;
 
 
+                console.log("2");
+
+
+
                 if(sexo_bsc == "0")
                 {
                     swal({title:'Error',text:'Seleccione el sexo del ciclista',type:'error'});
@@ -816,10 +824,15 @@ function UpdateRegistros() {
                     return false;
                 }
 
+                console.log("3");
 
                 var fechaNacimiento = $("#bscFechaNacimiento").val();
                 var fechaHoy = new Date().getTime();
                 var aniosDiferencia = ((fechaHoy - fechaNacimiento) / (1000 * 60 * 60 * 24 * 365.25));
+
+
+                console.log("4");
+
 
                 if(aniosDiferencia < 7 || aniosDiferencia > 100)
                 {
@@ -827,49 +840,70 @@ function UpdateRegistros() {
                     return false;
                 }
 
+                console.log("5");
 
                 
 
 
-
-
-
-
-                e.preventDefault();
+                if(nroTarjeta_bsc != "")
+                {
                 $.ajax({
                     type: "GET",
                     url: 'funciones.php',
-                    data: {
-                        "rutUpd": rut_bsc,
-                        "nombreupd": nombre_bsc,
-                        "telefonoupd": telefono_bsc,
-                        "sexoupd": sexo_bsc,
-                        "emailupd": email_bsc,
-                        "direccionupd": direccion_bsc,
-                        "comunaupd": comuna_bsc,
-                        "numerouvupd": numerouv_bsc,
-                        "nroTarjetaupd": nroTarjeta_bsc,
-                        "fecnacupd": fecNaci_bsc,
-                        "nacionalidadupd": pais_bsc
-                        
-
-                    },
+                    data: {NroTarjetaConsulta: nroTarjeta_bsc},
                     error: function (jqXHR, textStatus, errorThrown) {
-                
-			//alert("Error " + textStatus + " -" + jqXHR + " -" + errorThrown);
-			swal({title:'Error',text:'El registro no se insertó',type:'error'});
+                        alert("Error: " + jqXHR + " +" + textStatus + " +" + errorThrown);
+                        document.getElementById("botondeenvio").disabled = false;
+                        return null;
                     },
-                    success: function (response) {
-						swal({title:'Exito',text:'Usuario actualizado correctamente',type:'success'});
-                        //alert("Usuario actualizado correctamente");
-                        LimpiarformBuscar();
-			// document.getElementById('id01').style.display = 'none';
-                    }
+                    
+                    success: function (respTarjeta) { 
+
+                        console.log("6");
+
+                        console.log(respTarjeta);
+
+                        if(respTarjeta[0].RUT != "-1")
+                        {
+                            swal({ title: 'Error', text: 'N° de tarjeta pertenece a otro usuario: ' + respTarjeta[0].NOMBRE + ' (RUT: '+ respTarjeta[0].RUT +')', type: 'error' }); 
+                            document.getElementById("botondeenvio").disabled = false;
+                            return null;
+                        }
+
+
+                          $.ajax({
+                              type: "GET",
+                              url: 'funciones.php',
+                              data: {
+                                  "rutUpd": rut_bsc,
+                                  "nombreupd": nombre_bsc,
+                                  "telefonoupd": telefono_bsc,
+                                  "sexoupd": sexo_bsc,
+                                  "emailupd": email_bsc,
+                                  "direccionupd": direccion_bsc,
+                                  "comunaupd": comuna_bsc,
+                                  "numerouvupd": numerouv_bsc,
+                                  "nroTarjetaupd": nroTarjeta_bsc,
+                                  "fecnacupd": fecNaci_bsc,
+                                  "nacionalidadupd": pais_bsc                              
+
+                              },
+                              error: function (jqXHR, textStatus, errorThrown) 
+                              {
+                                swal({title:'Error',text:'El registro no se insertó',type:'error'});
+                              },
+                              success: function (response) 
+                              {
+                                swal({title:'Exito',text:'Usuario actualizado correctamente',type:'success'});
+                                LimpiarformBuscar();
+                              }
+                            });
+                        }
 
                 });
-
-
+            }
             });
+
 
             $('#fondoAvisoCorrecto').click(function () {
 

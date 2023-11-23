@@ -377,6 +377,37 @@ $this->objetoDato->desconectar();
 		$this->objetoDato->desconectar();
 		echo json_encode($return_arr);
 	}
+
+
+	public function ConsultaBipEscaneada($nroTarjeta)
+	{
+		$this->objetoDato->conector();
+
+		$encontrado = false;
+		$return_arr = array();
+		
+		
+		$usuarioBip = $this->objetoDato->ejecutar("SELECT CIC_RUT, CIC_NOMBRE FROM TB_CIC_CICLISTA CIC WHERE CIC_NRO_TARJETA = '$nroTarjeta' LIMIT 1"); 	
+			
+		foreach($usuarioBip as $usr)
+		{
+			$encontrado = true;
+			if(strlen($usr[0]) > 1)
+			{
+				$encontrado = true;
+				$return_arr[] = array("RUT" => $usr[0], "NOMBRE" => $usr[1]);
+			}
+			
+		}	
+
+		if (!$encontrado)
+		{
+			$return_arr[] = array("RUT" => "-1", "NOMBRE" => "");
+		}
+		
+		$this->objetoDato->desconectar();
+		echo json_encode($return_arr);
+	}
 	
 	
 	

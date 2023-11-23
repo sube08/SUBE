@@ -608,14 +608,39 @@
 
             //AJAX NUEVO USUARIO SIN BICICLETA
             $('#form-new-user').submit(function (e) { 
+                e.preventDefault();
                document.getElementById("botondeenvio").disabled = true;
 
-                
-                e.preventDefault();
+                //comprobar si el nro de tarjeta bip ya se esta utilizando
+               let nroTarjeta = $("#txtNroTarjeta").val();
+
+               if(nroTarjeta != "")
+               {
                 $.ajax({
                     type: "GET",
                     url: 'funciones.php',
-                    data: $(this).serialize(),
+                    data: {NroTarjetaConsulta: nroTarjeta},
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert("Error: " + jqXHR + " +" + textStatus + " +" + errorThrown);
+                        document.getElementById("botondeenvio").disabled = false;
+                        return null;
+                    },
+                    
+                    success: function (respTarjeta) { 
+
+                        console.log(respTarjeta);
+
+                        if(respTarjeta[0].RUT != "-1")
+                        {
+                            swal({ title: 'Error', text: 'N° de tarjeta pertenece a otro usuario: ' + respTarjeta[0].NOMBRE + ' (RUT: '+ respTarjeta[0].RUT +')', type: 'error' }); 
+                            document.getElementById("botondeenvio").disabled = false;
+                            return null;
+                        }
+
+                    $.ajax({
+                    type: "GET",
+                    url: 'funciones.php',
+                    data: $('#form-new-user').serialize(),
                     error: function (jqXHR, textStatus, errorThrown) {
                         alert("Error: " + jqXHR + " +" + textStatus + " +" + errorThrown);
                     },
@@ -639,7 +664,25 @@
  
                     }
 
-                });     
+                });  
+
+
+
+
+
+
+
+                    }
+                });
+
+               }
+
+
+
+
+
+
+                   
 
             });
 
