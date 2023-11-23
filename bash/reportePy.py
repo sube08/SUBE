@@ -55,6 +55,8 @@ usuVeinte = "SELECT COUNT( DISTINCT(CIC.CIC_RUT)) AS '20 Y 29' FROM TB_CIC_CICLI
 usuDiez = "SELECT COUNT( DISTINCT(CIC.CIC_RUT)) AS 'MENOS 20' FROM TB_CIC_CICLISTA CIC INNER JOIN TB_MOV_MOVIMIENTO MOV ON  CIC.CIC_RUT = MOV.CIC_RUT  WHERE CIC.CIC_FECHA_NACIMIENTO > ADDDATE('" + prm_fecha +"', INTERVAL -20 YEAR) AND CIC.CIC_FECHA_NACIMIENTO <= ADDDATE('" + prm_fecha +"', INTERVAL -10 YEAR)  AND CAST(MOV.MOV_HORA AS DATE) = '" + prm_fecha +"'"
 
 registroNovedades = "SELECT LIB.LIB_DESCRIPCION, LIB.LIB_HORA, OPR.OPR_NOMBRE FROM TB_LIB_LIBRO_NOVEDADES LIB INNER JOIN TB_OPR_OPERADOR OPR ON OPR.OPR_ID = LIB.OPR_ID WHERE  CAST(LIB_HORA AS DATE) = '" + prm_fecha + "'"
+observacionesCiclistas = "SELECT OBS_ID, CIC.CIC_RUT, CIC.CIC_NOMBRE,(SELECT COUNT(*) FROM TB_OBS_OBSERVACIONES_CICLISTA OBS2 WHERE OBS2.CIC_RUT = CIC.CIC_RUT) AS 'CANTIDAD OBSERVACIONES', CASE WHEN OBS_TIPO = 1 THEN 'LEVE' WHEN OBS_TIPO = 2 THEN 'MEDIO' ELSE 'GRAVE' END AS TIPO , OBS_DESCRIPCION FROM TB_OBS_OBSERVACIONES_CICLISTA OBS INNER JOIN TB_CIC_CICLISTA CIC ON OBS.CIC_RUT = CIC.CIC_RUT WHERE CAST(OBS_HORA AS DATE) = '" + prm_fecha +"'"
+
 
 sql = "SELECT * FROM TB_CIC_CICLISTA limit 10"
 
@@ -207,6 +209,23 @@ for x in myresult:
 tablaNovedades = tablaNovedades + "</table></center>"
 
 
+mycursor.execute(observacionesCiclistas)
+myresult = mycursor.fetchall()
+
+
+tablaAnotaciones = "<center><table style='width:80%; border-collapse: collapse; border: 1px solid black; '><tr><td style='border: 1px solid black;'><center><b>RUT CICLISTA</b></center></td><td style='border: 1px solid black;'><center><b>NOMBRE</b></center></td><td style='border: 1px solid black;'><center><b>TOTAL OBS.</b></center></td><td style='border: 1px solid black;'><center><b>TIPO</b></center></td><td style='border: 1px solid black;'><center><b>HORA</b></center></td><td style='border: 1px solid black;'><center><b>DESCRIPCION</b></center></td></tr>"
+
+for x in myresult:
+	tablaAnotaciones = tablaAnotaciones + "<tr>"
+	tablaAnotaciones = tablaAnotaciones + "<td style='border: 1px solid black;'>"+str(x[1])+"</td><td style='border: 1px solid black;'>"+str(x[2])+"</td><td style='border: 1px solid black;'>"+str(x[3])+"</td><td style='border: 1px solid black;'>"+str(x[4])+"</td><td style='border: 1px solid black;'>"+str(x[5]).replace(prm_fecha,"")+"</td><td style='border: 1px solid black;'>"+(x[6])+"</td>"
+	tablaAnotaciones = tablaAnotaciones + "</tr>"
+
+
+
+tablaAnotaciones = tablaAnotaciones + "</table></center>"
+
+
+
 
 
 tablaDetalleGeneral = "<table>"
@@ -235,7 +254,7 @@ tablaDetalleHoy += "</table>"
 
 asunto = "Reporte diario -SUBE-" + prm_fecha
 
-mensajito = " <h1>Estimado(a) </h1>  <h2>a continuaci&oacute;n el reporte diario <b><i>SUBE</i></b></h2></br>" +str(tablaDetalleGeneral)  + "<hr/> <h4>Detalle Ingresos hoy </h4> " + str(tablaDetalleHoy) + "  <br/>  <center><h2>Novedades del d&iacute;a</h2></center>" + (tablaNovedades)+ "<br/>  <img src='https://www.subelaflorida.cl/wp-content/uploads/2021/05/Logo-SUBE-1-1024x717.png'  style='width:150px; height:105px'/>   </br></br><p>Por favor no responda a este correo, ya que se envia desde un proceso automatizado usando una cuenta no monitoreada.</p>"
+mensajito = " <h1>Estimado(a) </h1>  <h2>a continuaci&oacute;n el reporte diario <b><i>SUBE</i></b></h2></br>" +str(tablaDetalleGeneral)  + "<hr/> <h4>Detalle Ingresos hoy </h4> " + str(tablaDetalleHoy) + "  <br/>  <center><h2>Novedades del d&iacute;a</h2></center>" + (tablaNovedades)+ "<br/>" + (tablaAnotaciones) + "<br/>  <img src='https://www.fomentolaflorida.cl/app/images/Logo-SUBE.png'  style='width:150px; height:105px'/>   </br></br><p>Por favor no responda a este correo, ya que se envia desde un proceso automatizado usando una cuenta no monitoreada.</p>"
 
 
 servidor_smtp = 'smtp.office365.com'
