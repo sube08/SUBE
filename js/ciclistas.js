@@ -865,9 +865,12 @@ function UpdateRegistros() {
 
                         if(respTarjeta[0].RUT != "-1")
                         {
-                            swal({ title: 'Error', text: 'N° de tarjeta pertenece a otro usuario: ' + respTarjeta[0].NOMBRE + ' (RUT: '+ respTarjeta[0].RUT +')', type: 'error' }); 
-                            document.getElementById("botondeenvio").disabled = false;
-                            return null;
+				if(respTarjeta[0].RUT != rut_bsc)
+				{
+					swal({ title: 'Error', text: 'N° de tarjeta pertenece a otro usuario: ' + respTarjeta[0].NOMBRE + ' (RUT: '+ respTarjeta[0].RUT +')', type: 'error' }); 
+                            		document.getElementById("botondeenvio").disabled = false;
+                            		return null;					
+				}                            
                         }
 
 
