@@ -264,7 +264,6 @@ function funcionDespliegaInfoRG() {
 //        $status = ($stoptime - $starttime) * 1000;
 //        $status = floor($status);
 //    }
-//    
 //    if ($status <> -1) {
 //        return true;
 //    }
